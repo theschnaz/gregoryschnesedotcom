@@ -105,34 +105,28 @@
   "portfolio":{
     "projects": [
       {
-        "title":"Canadian Wanderlust",
-        "category":"My Travel Blog for my post-university travels",
-        "image":"canadian-wanderlust.jpg",
-        "url":"https://www.canadianwanderlust.com"
+        "title":"CreatorsPromote",
+        "category":"Marketing for creators and influencers via cross-promotion.",
+        "image":"creatorspromote.jpg",
+        "url":"https://www.creatorspromote.com"
       },
       {
-        "title":"Fury Fighting Gear",
-        "category":"(offline now) A fighting gear company I started",
-        "image":"fury-fighting-gear.jpg",
-        "url":"http://www.timbakerdev.com"
+        "title":"Democracy Follows",
+        "category":"A personalized weekly newsletter about the people who represent you in government.",
+        "image":"democracyfollows.jpg",
+        "url":"http://www.gregoryschnese.com"
       },
       {
-        "title":"Original Thai Food",
-        "category":"Website I built for a restaurant I like in Thailand",
-        "image":"original-thai-food.jpg",
+        "title":"Likely",
+        "category":"A mobile game I created that asks the question, Which is likely better?",
+        "image":"likely.jpg",
         "url":"http://www.timbakerdev.com/originalthaifood.github.io"
       },
       {
-        "title":"Resume Website",
-        "category":"A React based resume website template",
-        "image":"resume-website.jpg",
+        "title":"Drinkspottings",
+        "category":"A mobile app I created where you can share and take photos of your fav drinks!",
+        "image":"drinkspottings.jpg",
         "url":"http://www.timbakerdev.com"
-      },
-      {
-        "title":"Smirkspace",
-        "category":"(MVP Only) A React and Meteor based chat University project.",
-        "image":"smirkspace.jpg",
-        "url":"http://www.smirkspace.com"
       }
     ]
   },

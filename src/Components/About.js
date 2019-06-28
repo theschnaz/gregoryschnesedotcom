@@ -27,7 +27,6 @@ class About extends Component {
             <h2>Hello, I'm Gregory Schnese</h2>
 
             <p>{bio}</p>
-            <p>Note to self, break up the status in the above copy into variables in the json and then JS.</p>
             <p>{poker}</p>
             <div className="row">
                <div className="columns contact-details">
@@ -38,7 +37,7 @@ class About extends Component {
                </div>
                <div className="columns download">
                   <p>
-                     <a href={resumeDownload} className="button"><i className="fa fa-download"></i>Download Resume</a>
+                     <a href={resumeDownload} className="button"><i className="fa fa-file-text-o"></i>View Resume</a>
                   </p>
                </div>
             </div>

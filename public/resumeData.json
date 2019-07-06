@@ -107,16 +107,28 @@
         "url":"http://www.gregoryschnese.com"
       },
       {
+        "title":"Coovents",
+        "category":"A presentation of Coovents at the IAC building in New York. I created the backend and API.",
+        "image":"coovents.jpg",
+        "url":"https://drive.google.com/file/d/1_Td4vL5xv86TynkIy9j5W_IPRYyd3W6T/view?usp=sharing"
+      },
+      {
+        "title":"Watchlr",
+        "category":"A presentation of Watchlr, a video saving and sharing service, created at kikin.",
+        "image":"watchlr.jpg",
+        "url":"https://drive.google.com/file/d/1coW6bnZtc3EEWnQK2pFU280glbOnSnxh/view?usp=sharing"
+      },
+      {
         "title":"Likely",
         "category":"A mobile game I created that asks the question, Which is likely better?",
         "image":"likely.jpg",
-        "url":"http://www.timbakerdev.com/originalthaifood.github.io"
+        "url":"#"
       },
       {
         "title":"Drinkspottings",
         "category":"A mobile app I created where you can share and take photos of your fav drinks!",
         "image":"drinkspottings.jpg",
-        "url":"http://www.timbakerdev.com"
+        "url":"#"
       }
     ]
   },

@@ -104,7 +104,7 @@
         "title":"Democracy Follows",
         "category":"A personalized weekly newsletter about the people who represent you in government.",
         "image":"democracyfollows.jpg",
-        "url":"http://www.gregoryschnese.com"
+        "url":"https://github.com/theschnaz/democracyfollows"
       },
       {
         "title":"Coovents",
@@ -122,13 +122,13 @@
         "title":"Likely",
         "category":"A mobile game I created that asks the question, Which is likely better?",
         "image":"likely.jpg",
-        "url":"#"
+        "url":"https://github.com/theschnaz/likely_backend"
       },
       {
         "title":"Drinkspottings",
         "category":"A mobile app I created where you can share and take photos of your fav drinks!",
         "image":"drinkspottings.jpg",
-        "url":"#"
+        "url":"https://github.com/theschnaz/drinkspottings"
       }
     ]
   },

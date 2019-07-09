@@ -40,6 +40,10 @@ header {
    overflow: hidden;
 }
 
+.toc {
+  background: #161415 url(../images/writing/castle.jpg) no-repeat top center;
+}
+
 /* vertically center banner section */
 header:before {
    content: '';

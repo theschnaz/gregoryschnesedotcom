@@ -197,6 +197,10 @@ ul#nav li.current a { color: #F06000; }
    overflow: hidden;
 }
 
+#about .writing {
+  background: #f6f6f6;
+}
+
 #about a, #about a:visited  { color: #fff; }
 #about a:hover, #about a:focus { color: #11ABB0; }
 
@@ -230,6 +234,59 @@ ul#nav li.current a { color: #F06000; }
    color: #2B2B2B;
 }
 #about .download .button i {
+   margin-right: 15px;
+   font-size: 20px;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* c. writing Section
+/* ------------------------------------------------------------------ */
+
+#writing {
+   background: #ECECEC;
+   padding-top: 96px;
+   padding-bottom: 66px;
+   overflow: hidden;
+}
+
+#writing .writing {
+  background: #f6f6f6;
+}
+
+#writing a, #writing a:visited  { color: #fff; }
+#writing a:hover, #writing a:focus { color: #11ABB0; }
+
+#writing h2 {
+   font: 22px/30px 'opensans-bold', sans-serif;
+   color: #7A7A7A;
+   margin-bottom: 12px;
+}
+#writing p {
+   line-height: 30px;
+   color: #7A7A7A;
+}
+#writing .profile-pic {
+   position: relative;
+   width: 120px;
+   height: 120px;
+   border-radius: 100%;
+}
+#writing .contact-details { width: 41.66667%; }
+#writing .download {
+   width: 58.33333%;
+   padding-top: 6px;
+}
+#writing .main-col { padding-right: 5%; }
+#writing .download .button {
+   margin-top: 6px;
+   background: #444;
+}
+#writing .download .button:hover {
+   background: #fff;
+   color: #2B2B2B;
+}
+#writing .download .button i {
    margin-right: 15px;
    font-size: 20px;
 }

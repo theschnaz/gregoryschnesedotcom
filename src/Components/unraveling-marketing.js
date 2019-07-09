@@ -19,29 +19,16 @@ class About extends Component {
 
     return (
       <div id="target">
-        <section id="about">
+        <section id="writing" >
           <div className="row">
              <div className="three columns">
                 <img className="profile-pic"  src={profilepic} alt="Gregory Schnese Profile Pic" />
              </div>
              <div className="nine columns main-col">
-                <h2>Hello, I'm Gregory Schnese.</h2>
-
-                <p>{bio}</p>
-                <p>{poker}</p>
-                <div className="row">
-                   <div className="columns contact-details">
-                      <h2>Email</h2>
-                      <p className="address">
-                         <span>{email}</span>
-    					        </p>
-                   </div>
-                   <div className="columns download">
-                      <p>
-                         <a href={resumeDownload} className="button"><i className="fa fa-file-text-o"></i>View Resume</a>
-                      </p>
-                   </div>
-                </div>
+                <h2>Hello, I'm unraveling marketing.</h2>
+                <p>
+                  This is where the new post will go.
+                </p>
              </div>
           </div>
         </section>

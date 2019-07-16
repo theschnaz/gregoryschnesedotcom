@@ -51,10 +51,38 @@ class About extends Component {
                 <img className="profile-pic"  src="/images/profilepic.jpg" alt="Gregory Schnese Profile Pic" />
               </div>
               <div className="nine columns main-col">
-                <h2>Introduction and Table of Contents</h2>
+                <h2>Living the Yield and Bounty Life</h2>
+                <p>What is yield based marketing and how can bounties help you achieve your marketing goals?</p>
+                <p>In SaaS marketing, the goal is to generate a high return on marketing effort or spend. Many ad platforms support this through return on ad spend (ROAS) bidding. Google calculates ROAS by summing your sales, then dividing it by spend, then multiplying it by 100%:</p>
+                <p><img src="/images/writing/chapterone/roas.png" /></p>
+                <p>(<a href="https://support.google.com/google-ads/answer/6268637?hl=en" target="_blank">https://support.google.com/google-ads/answer/6268637?hl=en</a>)</p>
+                <p>While this is easy to understand, it’s much harder to implement. In this chapter, we’ll look at why this is hard and which steps we can take to build our marketing machine so we can generate a high return on ad spend.</p>
                 <p>
-                  This is where the new post will go.
+                	At the beginning, the problem is volume or frequency of events. Let’s say you have the following marketing funnel:
+                	<ol>
+                		<li>Suspect (landing page visitors, etc.)</li>
+                		<li>MQL (marketing qualified lead)</li>
+                		<li>SAL (sales accepted lead)</li>
+                		<li>Customer (someone who can generate recurring revenue)</li>
+                	</ol>
                 </p>
+                <p>You’ll have many more suspects than customers, sometimes as much as 100x more. ROAS bidding assumes you have enough sales or customer data to pass back to an ad partner which will use this data to optimize your campaign.</p>
+                <p>When you aren’t generating enough sales or customer events, you’ll need to look higher up your funnel to a place where you generate enough volume of events. At minimum, you would want at least 30 events per week. Continue to move up your funnel until you find an event.</p>
+                <p>Now that you have selected your event, we’ll use the MQL event for this example, how do you calculate a return on your MQLs?</p>
+                <p>To do this, you’ll need to write out your funnel and the conversion rates from one step to the next. For our example, we can assume:</p>
+                <p><img src="/images/writing/chapterone/spreadsheet.png" /></p>
+                <p>For every suspect we generate, 20% of them become MQLs, 30% of MQLs become SALs, and 50% of SALs become paying customers. If our goal was to generate a new paying customer for every $500 in spend, we could set a bounty of $75 for our MQL event.</p>
+                <p>In other words, for every $75 we spend, we want to generate 1 MQL. For every $500 we spend, we want to generate a new customer.</p>
+                <p><img src="/images/writing/chapterone/mql.jpg" /></p>
+                <p>Now that we have a bounty value, what are we going to do with it? We’re going to create our yield (or return) metric!</p>
+                <p>Yield is calculated like ROAS, but we are using our bounty values instead of customer ARR or sales:</p>
+                <p>Yield = ((# of conversions * bounty per conversion) / spend) * 100%</p>
+                <p><img src="/images/writing/chapterone/yield.jpg" /></p>
+                <p>Let’s say we spent $1,300 and generated 15 MQLs. How much yield did we generate?</p>
+                <p>((15 * $75) / $1,300) * 100% = 87%</p>
+                <p>I typically aim for yields that are 70% or higher, but yield targets are highly dependent on your industry and product.</p>
+                <p>As we build volume and spend more, we’ll generate more data. Once we hit the 30 SAL conversions per week, we can repeat this entire process again and find our SAL yield. You can grow your marketing data and spend and repeat this process until you generate enough customers or purchases. At that point, yield and ROAS become the same metric.</p>
+                <p>Feel free to reach out with any questions. I’d love to hear about your success with yield based marketing too!</p>
               </div>
             </div>
           </section>

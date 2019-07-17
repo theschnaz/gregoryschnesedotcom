@@ -189,7 +189,6 @@ ul#nav li a {
 ul#nav li a:active { background-color: transparent !important; }
 ul#nav li.current a { color: #F06000; }
 
-
 /* ------------------------------------------------------------------ */
 /* c. About Section
 /* ------------------------------------------------------------------ */
@@ -248,27 +247,24 @@ ul#nav li.current a { color: #F06000; }
 /* ------------------------------------------------------------------ */
 
 #writing {
-   background: #ECECEC;
+   background: #fff;
    padding-top: 96px;
    padding-bottom: 66px;
    overflow: hidden;
 }
 
-#writing .writing {
-  background: #f6f6f6;
-}
-
-#writing a, #writing a:visited  { color: #fff; }
-#writing a:hover, #writing a:focus { color: #11ABB0; }
+#writing a, #writing a:visited  { color: #000; }
+#writing a:hover, #writing a:focus { color: #555; }
 
 #writing h2 {
    font: 22px/30px 'opensans-bold', sans-serif;
-   color: #7A7A7A;
+   color: #313131;
    margin-bottom: 12px;
 }
 #writing p {
    line-height: 30px;
-   color: #7A7A7A;
+   color: #313131;
+   font-size:16px;
 }
 #writing .profile-pic {
    position: relative;

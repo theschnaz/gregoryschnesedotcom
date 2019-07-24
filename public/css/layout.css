@@ -223,23 +223,7 @@ ul#nav li.current a { color: #F06000; }
    border-radius: 100%;
 }
 #about .contact-details { width: 41.66667%; }
-#about .download {
-   width: 58.33333%;
-   padding-top: 6px;
-}
-#about .main-col { padding-right: 5%; }
-#about .download .button {
-   margin-top: 6px;
-   background: #444;
-}
-#about .download .button:hover {
-   background: #fff;
-   color: #2B2B2B;
-}
-#about .download .button i {
-   margin-right: 15px;
-   font-size: 20px;
-}
+
 
 
 /* ------------------------------------------------------------------ */
@@ -303,7 +287,7 @@ ul#nav li.current a { color: #F06000; }
    overflow: hidden;
 }
 
-#resume a, #resume a:visited  { color: #11ABB0; }
+#resume a, #resume a:visited  { color: #fff; }
 #resume a:hover, #resume a:focus { color: #313131; }
 
 #resume h1 {
@@ -339,9 +323,25 @@ ul#nav li.current a { color: #F06000; }
 }
 #resume .date {
    font: 15px/24px 'opensans-regular', sans-serif;
-   margin-top: 6px;
+   margin-top: 6px;#11ABB0
 }
-
+#resume .download {
+   width: 58.33333%;
+   padding-top: 6px;
+}
+#resume .main-col { padding-right: 5%; }
+#resume.download .button {
+   margin-top: 6px;
+   background: #444;
+}
+#resume .download .button:hover {
+   background: #fff;
+   color: #2B2B2B;
+}
+#resume .download .button i {
+   margin-right: 15px;
+   font-size: 20px;
+}
 /*----------------------------------------------*/
 /*	Skill Bars
 /*----------------------------------------------*/
@@ -984,6 +984,57 @@ call-to-action .button {
    font: 13px/36px 'opensans-regular', Sans-serif;
    color: #474747 !important;
    border: none;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* d. Writing Section
+/* ------------------------------------------------------------------ */
+
+#writing {
+   background: #fff;
+   padding-top: 90px;
+   padding-bottom: 0px;
+   overflow: hidden;
+}
+
+#writing a, #writing a:visited  { color: #11ABB0; }
+#writing a:hover, #writing a:focus { color: #313131; }
+
+#writing h1 {
+   font: 18px/24px 'opensans-bold', sans-serif;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+}
+#writing h1 span {
+   border-bottom: 3px solid #11ABB0;
+   padding-bottom: 6px;
+}
+#writing h3 {
+   font: 25px/30px 'opensans-bold', sans-serif;
+}
+
+#writing .header-col { padding-top: 9px; }
+#writing .main-col { padding-right: 10%; }
+
+.education, .work {
+   margin-bottom: 48px;
+   padding-bottom: 24px;
+   border-bottom: 0px;
+}
+#writing .info {
+   font: 16px/24px 'librebaskerville-italic', serif;
+   color: #6E7881;
+   margin-bottom: 18px;
+   margin-top: 9px;
+}
+#writing .info span {
+   margin-right: 5px;
+   margin-left: 5px;
+}
+#writing .date {
+   font: 15px/24px 'opensans-regular', sans-serif;
+   margin-top: 6px;
 }
 
 

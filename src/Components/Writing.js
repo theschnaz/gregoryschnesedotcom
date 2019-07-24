@@ -23,38 +23,24 @@ class Resume extends Component {
     }
 
     return (
-      <section id="resume">
+      <section id="writing">
 
       <div className="row education">
          <div className="three columns header-col">
-            <h1><span>Education</span></h1>
+            <h1><span>Chapter 1</span></h1>
          </div>
 
          <div className="nine columns main-col">
             <div className="row item">
                <div className="twelve columns">
-                 {education}
+                <h3><a href="/yields-and-bounties">Yield and Bounty:<br/>The Framework for Paid SaaS Growth</a></h3>
+                <p class="info">What is yield based marketing and how can bounties help you achieve your marketing goals?</p>
                </div>
             </div>
          </div>
       </div>
 
 
-      <div className="row work">
-
-         <div className="three columns header-col">
-            <h1><span>Work</span></h1>
-         </div>
-
-         <div className="nine columns main-col">
-          {work}
-        </div>
-        <center>
-          <p>
-             <a href="https://drive.google.com/file/d/1enoSouahJMpi7AZiYLqMfxg5uQrH6lhM/view" className="button"><i className="fa fa-file-text-o"></i>View Resume</a>
-          </p>
-        </center>
-      </div>
    </section>
     );
   }

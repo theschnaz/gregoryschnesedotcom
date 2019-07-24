@@ -88,8 +88,10 @@ class About extends Component {
                 <p>Let’s say we spent $1,300 and generated 15 MQLs. How much yield did we generate?</p>
                 <p>((15 * $75) / $1,300) * 100% = 87%</p>
                 <p>I typically aim for yields that are 70% or higher, but yield targets are highly dependent on your industry and product.</p>
-                <p>As we build volume and spend more, we’ll generate more data. Once we hit the 30 SAL conversions per week, we can repeat this entire process again and find our SAL yield. We can grow our dat, spend, and repeat this process until we generate enough customers or purchases. At that point, yield and ROAS become the same metric.</p>
+                <p>As we build volume and spend more, we’ll generate more data. Once we hit the 30 SAL conversions per week, we can repeat this entire process again and find our SAL yield. We can grow our data, spend, and repeat this process until we generate enough customers or purchases. At that point, yield and ROAS become the same metric.</p>
                 <p>Feel free to reach out with any questions. I’d love to hear about your success with yield based marketing!</p>
+                <br />
+                <br />
               </div>
             </div>
           </section>

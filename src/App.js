@@ -10,6 +10,7 @@ import Contact from './Components/Contact';
 import Writing from './Components/Writing';
 import Testimonials from './Components/Testimonials';
 import Portfolio from './Components/Portfolio';
+import {Helmet} from "react-helmet";
 
 class App extends Component {
 
@@ -47,6 +48,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Helmet>
+          <meta name="description" content="Writings, presentations, services, and resume from Gregory Schnese." />
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content="http://www.gregoryschnese.com/images/ogbackground.jpg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:site_name" content="GregorySchnese.com" />
+          <meta property="og:url" content="http://www.gregoryschnese.com" />
+          <meta property="og:title" content="GregorySchnese.com" />
+         <title>Gregory Schnese | Marketing, Software, & Poker</title>
+        </Helmet>
+
         <Header data={this.state.resumeData.main}/>
         <About data={this.state.resumeData.main}/>
         <Writing />

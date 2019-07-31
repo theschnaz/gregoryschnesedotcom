@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Helmet} from "react-helmet";
 
 class About extends Component {
   render() {
@@ -22,6 +23,17 @@ class About extends Component {
 
     return (
       <div>
+        <Helmet>
+          <meta name="description" content="Writings, presentations, services, and resume from Gregory Schnese." />
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content="http://www.gregoryschnese.com/images/ogbackground.jpg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:site_name" content="GregorySchnese.com" />
+          <meta property="og:url" content="http://www.gregoryschnese.com" />
+          <meta property="og:title" content="GregorySchnese.com" />
+          <title>Yield and Bounty: The Framework for Paid SaaS Growth</title>
+        </Helmet>
         <header id="home" className="toc">
           <nav id="nav-wrap">
             <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>

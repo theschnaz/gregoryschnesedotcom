@@ -17,8 +17,6 @@ const routing = (
 
 //ReactDOM.render(routing, document.getElementById('root'));
 
-import { hydrate, render } from "react-dom";
-
 const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
   hydrate(routing, rootElement);

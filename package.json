@@ -22,6 +22,12 @@
     "heroku-postbuild": "npm run build",
     "postbuild": "react-snap"
   },
+  "reactSnap": {
+  "source": "dist",
+  "minifyHtml": {
+    "collapseWhitespace": false,
+    "removeComments": false
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

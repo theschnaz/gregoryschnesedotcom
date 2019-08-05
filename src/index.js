@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM { hydrate, render } from 'react-dom';
+import { hydrate, render } from "react-dom";
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';

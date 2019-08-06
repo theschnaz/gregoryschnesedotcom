@@ -14,7 +14,6 @@
     "serve": "^11.1.0"
   },
   "reactSnap": {
-    "inlineCss": true,
     "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
   },
   "scripts": {

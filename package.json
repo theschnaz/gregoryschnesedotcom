@@ -5,6 +5,7 @@
   "dependencies": {
     "jquery": "^3.4.1",
     "react": "^16.8.6",
+    "react-cap": "^5.11.0",
     "react-dom": "^16.8.6",
     "react-ga": "^2.5.7",
     "react-helmet": "^5.2.1",
@@ -14,7 +15,10 @@
     "serve": "^11.1.0"
   },
   "reactSnap": {
-    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
   },
   "scripts": {
     "dev": "react-scripts start",

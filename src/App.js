@@ -10,7 +10,7 @@ import Contact from './Components/Contact';
 import Writing from './Components/Writing';
 import Testimonials from './Components/Testimonials';
 import Portfolio from './Components/Portfolio';
-import {Helmet} from "react-helmet";
+import Helmet from 'react-cap';
 
 class App extends Component {
 

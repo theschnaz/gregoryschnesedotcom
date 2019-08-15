@@ -63,7 +63,7 @@ class About extends Component {
                 </center>
               </div>
               <div className="nine columns main-col">
-                <h2>zzzYield and Bounty: The Framework for Paid SaaS Growth</h2>
+                <h2>Yield and Bounty: The Framework for Paid SaaS Growth</h2>
                 <p>What is yield based marketing and how can bounties help you achieve your marketing goals? I'm glad you asked. Get ready, we're going to dive in and answer those questions!</p>
                 <p>In SaaS marketing, the goal is to generate a high return on marketing effort and spend. Many ad platforms support this through return on ad spend (ROAS) bidding. Google calculates ROAS by summing your sales, dividing by spend, then multiplying by 100%:</p>
                 <p>

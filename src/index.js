@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import ChapterOne from './Components/writing/chapterone';
 import registerServiceWorker from './registerServiceWorker';
- 
+
 const routing = (
   <Router>
     <div>
@@ -19,9 +19,7 @@ const routing = (
 
 const rootElement = document.getElementById("root");
 
-if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrate(routing, rootElement);
-} else {
-  ReactDOM.render(routing, rootElement);
-}
+
+ReactDOM.render(routing, rootElement);
+
 registerServiceWorker();

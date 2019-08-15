@@ -19,7 +19,9 @@ const routing = (
 
 const rootElement = document.getElementById("root");
 
-
-ReactDOM.render(routing, rootElement);
-
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrate(routing, rootElement);
+} else {
+  ReactDOM.render(routing, rootElement);
+}
 registerServiceWorker();

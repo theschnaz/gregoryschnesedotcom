@@ -38,6 +38,18 @@ class Resume extends Component {
                </div>
             </div>
          </div>
+         <br />
+         <div className="three columns header-col">
+            <h1><span>Chapter 2</span></h1>
+         </div>
+         <div className="nine columns main-col">
+            <div className="row item">
+               <div className="twelve columns">
+                <h3><a href="/metrics-in-metrics">Metrics in Metrics:<br/>Find the Winning Segments Within</a></h3>
+                <p class="info">Unlock growth by breaking down metrics into meaningful segments and targeting the winners.</p>
+               </div>
+            </div>
+         </div>
       </div>
 
 

@@ -41,7 +41,10 @@ header {
 }
 
 .toc {
-  background: #161415 url(../images/writing/castle.jpg) no-repeat top center;
+  background: #161415 url(../images/writing/chapterone/castle.jpg) no-repeat center;
+}
+.toc2 {
+  background: #161415 url(../images/writing/chaptertwo/background.jpg) no-repeat center;
 }
 
 /* vertically center banner section */

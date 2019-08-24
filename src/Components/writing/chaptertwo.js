@@ -22,7 +22,7 @@ class About extends Component {
 
     return (
       <div>
-        <header id="home" className="toc">
+        <header id="home" className="toc2">
           <nav id="nav-wrap">
             <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
 	          <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
@@ -32,9 +32,9 @@ class About extends Component {
           </nav>
           <div className="row banner">
             <div className="banner-text">
-              <h1 className="responsive-headline">2222Yield and Bounty:<br />The Framework for Paid SaaS Growth</h1>
+              <h1 className="responsive-headline">Metrics in Metrics:<br />Find the Winning Segments Within</h1>
               <h2>Marketing Unraveled</h2>
-              <h2>The modern standard for SaaS growth and marketing.</h2>
+              <h2>The modern framework for SaaS growth and marketing.</h2>
             </div>
           </div>
           <p className="scrolldown">
@@ -51,45 +51,29 @@ class About extends Component {
                 </center>
               </div>
               <div className="nine columns main-col">
-                <h2>Yield and Bounty: The Framework for Paid SaaS Growth</h2>
-                <p>What is yield based marketing and how can bounties help you achieve your marketing goals? I'm glad you asked. Get ready, we're going to dive in and answer those questions!</p>
-                <p>In SaaS marketing, the goal is to generate a high return on marketing effort and spend. Many ad platforms support this through return on ad spend (ROAS) bidding. Google calculates ROAS by summing your sales, dividing by spend, then multiplying by 100%:</p>
-                <p>
-                  <img src="/images/writing/chapterone/roas.png" />
-                  <br />
-                  (<a href="https://support.google.com/google-ads/answer/6268637?hl=en" target="_blank">https://support.google.com/google-ads/answer/6268637?hl=en</a>)
-                </p>
-                <p>While this is easy to understand, it’s much harder to implement and actually generate marketing value. In this chapter, we’ll look at which steps we can take to build our marketing machine so we can generate a high return on ad spend (aka yield).</p>
-                <p>At the beginning, the problem is volume or frequency of events. We need data to do fancy bidding like ROAS but when we're starting out, we don't have a large dataset and we can't generate it quickly enough. What's a SaaS marketer to do?</p>
-                <p>Let’s say we have the following marketing funnel:
-                	<ol>
-                		<li>Suspect (landing page visitors, etc.)</li>
-                		<li>MQL (marketing qualified lead)</li>
-                		<li>SAL (sales accepted lead)</li>
-                		<li>Customer (someone who can generate recurring revenue)</li>
-                	</ol>
-                </p>
-                <p>We’ll have many more suspects than customers, sometimes as much as 100x. ROAS bidding assumes we have enough sales or customer data to pass back to an ad partner which will use this data to optimize our campaign.</p>
-                <p>When we aren’t generating enough sales or customer events, we'll need to look higher up the funnel to a place where we generate enough volume of events. At minimum, we want at least 30 events per week. We can continue to move up our funnel until we find an event that generates enough volume.</p>
-                <p>Now that we have selected the event, we’ll use the MQL event for this example, how do we calculate a return on MQL events? (This will be used as an approximation of events further down the funnel.)</p>
-                <p>To do this, we’ll need to write out the funnel and the conversion rates from one step to the next. For our example, we can assume:</p>
-                <p>
-                  <img src="/images/writing/chapterone/spreadsheet.png" />
-                  <br />
-                  (<a href="https://docs.google.com/spreadsheets/d/1WYv0ySyocdrn8W8Dbz0Kv4zzJb4UrZ4Coiul8sgY0nI/edit?usp=sharing" target="_blank">via Google Sheets</a>)
-                </p>
-                <p>For every suspect we generate, 20% of them become MQLs, 30% of MQLs become SALs, and 50% of SALs become paying customers. If our goal was to generate a new paying customer for every $500 in spend, we could set a bounty of $75 for our MQL event.</p>
-                <p>In other words, for every $75 we spend, we want to generate 1 MQL. For every $500 we spend, we want to generate a new customer.</p>
-                <p><img src="/images/writing/chapterone/mql.jpg" /></p>
-                <p>Now that we have a bounty value, what are we going to do with it? We’re going to create our yield (or return) metric!</p>
-                <p>Yield is calculated like ROAS, but we are using our bounty values instead of customer ARR or sales:</p>
-                <p>Yield = ((# of conversions * bounty per conversion) / spend) * 100%</p>
-                <p><img src="/images/writing/chapterone/yield.jpg" /></p>
-                <p>Let’s say we spent $1,300 and generated 15 MQLs. How much yield did we generate?</p>
-                <p>((15 * $75) / $1,300) * 100% = 87%</p>
-                <p>I typically aim for yields that are 70% or higher, but yield targets are highly dependent on your industry and product.</p>
-                <p>As we build volume and spend more, we’ll generate more data. Once we hit the 30 SAL conversions per week, we can repeat this entire process again and find our SAL yield. We can grow our data, spend, and repeat this process until we generate enough customers or purchases. At that point, yield and ROAS become the same metric.</p>
-                <p>Feel free to reach out with any questions. I’d love to hear about your success with yield based marketing!</p>
+                <h2>Metrics in Metrics: Find the Winning Segments Within</h2>
+                <p>Growth marketing is all about leveraging our winners and minimizing our losers. In chapter one, we discussed <a href="/yields-and-bounties">yields, bounties, and how to calculate them</a>. In this chapter, we will explore how our conversion rate metrics are really just averages, the segments that make up our metrics, and how to improve marketing by applying our yield and bounties framework to our winning segments.</p>
+                <p>Many companies track Very Important Key Performance Indicators (KPIs) or metrics. A user sign up, an app download, a trialing customer upgrading to a paid plan are all good examples.</p>
+                <p>For this chapter, let's pretend we are Netflix and we want to improve our trial to paying customer rate which is currently 13.3%. When we look at this metric, what we're reallying saying is <strong>on average</strong> our trialing accounts convert to paying customers 13.3% of the time.</p>
+                <p>While this may be true, when we take data and average it, we throw away a lot of the nuance in order to generate a clean and crisp datapoint.</p>
+                <p><strong>How can we improve our trial to paying customer rate?</strong></p>
+                <p>To start, let's assume our trial to paying customer rate is currently 13.3%. Since we know this metric is an average of all of our users, we can start to break it down into meaningful segments. What could be a meaningful segment for us? Maybe it's location, age, or customer interest category. For this post, let's go with customer interest category:</p>
+                <p><img src="/images/writing/chaptertwo/rate.png" /></p>
+                <p>When we slice our data by customer interest category, we find:</p>
+                <ul>
+                  <li>Horror fans convert from trial to paid at 12%</li>
+                  <li>Comedy fans convert from trial to paid at 25%</li>
+                  <li>Reality TV fans convert from trial to paid at 3%</li>
+                </ul>
+                <p>We clearly want direct our marketing efforts at comedy fans and avoid reality TV fans.</p>
+                <p><strong>How can we target comedy fans?</strong></p>
+                <p>We can use a tool, like <a href="https://segment.com/docs/spec/track/" target="_blank">Segment</a>, and pass a trialing customer's most watched category as a datapoint when they upgrade to a paying customer:</p>
+                <p><img src="/images/writing/chaptertwo/segment.png" /></p>
+                <p>Now that we are passing the type of customer (mostWatchedCategory) when they upgrade to a paying customer, we can send that data to an ad partner such as Google or Facebook. With these services, we can create an audience that looks like (a <a href="https://www.facebook.com/business/help/164749007013531" target="_blank">lookalike audience</a>) our best converting segment (comedy).</p>
+                <p>With our new comedy lookalike audience, we can target people who are similar to our best converting customers. We can even match the creative of our campaign to the type of incoming traffic. When people hit our landing page, we can show them funny shows and movies.</p>
+                <p>If we want to get advanced, we can make audiences for our lower performing segments and exclude them (do not spend money advertising to these people.)</p>
+                <p>By breaking our important metrics into meaningful segments, we can spend more money on high winners, less money on low performers, and we can match the creative to the type of people we target!</p>
+                <p>Feel free to reach out with any questions. I’d love to hear about your success with segment based marketing!</p>
                 <br />
                 <br />
               </div>

@@ -17,5 +17,10 @@ const routing = (
   </Router>
 )
 
-ReactDOM.render(routing, document.getElementById('root'));
+//ReactDOM.render(routing, document.getElementById('root'));
+
+const rootElement = document.getElementById("root");
+
+ReactDOM.render(routing, rootElement);
+
 registerServiceWorker();

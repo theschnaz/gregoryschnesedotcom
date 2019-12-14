@@ -33,7 +33,7 @@ class About extends Component {
           <div className="row banner">
             <div className="banner-text">
               <h1 className="responsive-headline">Yield and Bounty:<br />The Framework for Paid SaaS Growth</h1>
-              <h2>Marketing Unraveled</h2>
+              <h2>Market like Schnese:</h2>
               <h2>The modern standard for SaaS growth and marketing.</h2>
             </div>
           </div>

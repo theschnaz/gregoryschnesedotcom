@@ -33,7 +33,7 @@ class Resume extends Component {
         <div className="nine columns main-col">
            <div className="row item">
               <div className="twelve columns">
-               <h3>Market like Schnese: A Series of Growth Marketing Lessons</a></h3>
+               <h3>Market like Schnese: A Series of Growth Marketing Lessons</h3>
                <p class="info">The modern standard for SaaS growth and marketing.</p>
               </div>
            </div>

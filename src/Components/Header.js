@@ -34,7 +34,7 @@ class Header extends Component {
       <div className="row banner">
          <div className="banner-text">
             <h1 className="responsive-headline">{name}</h1>
-            <h2>Marketing | Developer | Cards</h2>
+            <h2>Growth Marketing | React & Rails | Cards</h2>
             <hr />
             <ul className="social">
                {networks}

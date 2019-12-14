@@ -26,8 +26,21 @@ class Resume extends Component {
       <section id="writing">
 
       <div className="row education">
+        <div className="three columns header-col">
+           <h1><span>&nbsp;</span></h1>
+        </div>
+
+        <div className="nine columns main-col">
+           <div className="row item">
+              <div className="twelve columns">
+               <h3>Market like Schnese: A Series of Growth Marketing Lessons</a></h3>
+               <p class="info">The modern standard for SaaS growth and marketing.</p>
+              </div>
+           </div>
+        </div>
+        <br />
          <div className="three columns header-col">
-            <h1><span>Chapter 1</span></h1>
+            <h1><span>Lesson 1</span></h1>
          </div>
 
          <div className="nine columns main-col">
@@ -38,9 +51,9 @@ class Resume extends Component {
                </div>
             </div>
          </div>
-         <br /> 
+         <br />
          <div className="three columns header-col">
-            <h1><span>Chapter 2</span></h1>
+            <h1><span>Lesson 2</span></h1>
          </div>
          <div className="nine columns main-col">
             <div className="row item">

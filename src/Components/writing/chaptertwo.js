@@ -33,7 +33,7 @@ class About extends Component {
           <div className="row banner">
             <div className="banner-text">
               <h1 className="responsive-headline">Metrics in Metrics:<br />Find the Winning Segments Within</h1>
-              <h2>Marketing Unraveled</h2>
+              <h2>Market like Schnese:</h2>
               <h2>The modern framework for SaaS growth and marketing.</h2>
             </div>
           </div>

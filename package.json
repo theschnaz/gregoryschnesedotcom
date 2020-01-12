@@ -1,7 +1,8 @@
 {
   "name": "gregoryschnesedotcom",
   "engines": {
-    "node": "13.6.0"
+    "node": "13.6.0",
+    "npm": "6.x"
   },
   "version": "0.1.0",
   "private": true,

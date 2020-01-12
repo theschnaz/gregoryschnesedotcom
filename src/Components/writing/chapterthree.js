@@ -54,7 +54,7 @@ class About extends Component {
                 <h2>How to Run a Proper A/B Test</h2>
                 <p>"Let's just run a test." -every startup ever</p>
                 <p>Testing gets thrown around a lot at companies, but many people don't appreciate what are good test candidates and how much time is required to run a proper test.</p>
-                <p><strong>What is an A/B test?</strong></p>
+                <p><strong>What is an A/B Test?</strong></p>
                 <p>In simple terms, an A/B test is used to see how a change impacts a metric. If we change our signup button from green to blue, how does that impact our signup rate? By using two (A or B) or more groups, any extraneous influences (news, seasonality, etc.) will impact both groups equally so we can focus only on the change we introduce. We isolate our change so it is the only difference between the groups. This way, we can be confident the change in metrics is due to our effort.</p>
                 <p><strong>First A/B Test</strong></p>
                 <p>To run a proper A/B test we need to anticipate what we expect the impact to be, calculate our required sample size, and then see if the results are statically significant. Sample size and statistical significance are important because we want to make sure the change in a metric is caused by our actions and not something else.</p>

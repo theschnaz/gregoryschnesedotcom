@@ -19,7 +19,10 @@ class Footer extends Component {
            </ul>
 
            <ul className="copyright">
-              <li>&copy; Copyright 2019 Gregory Schnese</li>
+              <li>&copy; Copyright 2020 Gregory Schnese</li>
+           </ul>
+           <ul className="copyright">
+              <li>Lesson Photo Credits: <a target="_blank" href="https://unsplash.com/@mischievous_penguins">Casey Horner</a></li>
            </ul>
            <ul className="copyright">
               <li>#HODL</li>

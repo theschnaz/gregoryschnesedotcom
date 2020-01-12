@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import ChapterOne from './Components/writing/chapterone';
 import ChapterTwo from './Components/writing/chaptertwo';
+import ChapterTwo from './Components/writing/chapterthree';
 import registerServiceWorker from './registerServiceWorker';
 
 const routing = (
@@ -13,6 +14,7 @@ const routing = (
       <Route exact path="/" component={App} />
       <Route path="/yields-and-bounties" component={ChapterOne} />
       <Route path="/metrics-in-metrics" component={ChapterTwo} />
+      <Route path="/how-to-run-a-proper-ab-test" component={ChapterThree} />
     </div>
   </Router>
 )

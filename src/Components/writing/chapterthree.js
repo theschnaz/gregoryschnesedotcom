@@ -51,7 +51,7 @@ class About extends Component {
                 </center>
               </div>
               <div className="nine columns main-col">
-                <h2><How to run a proper A/B Test</h2>
+                <h2>How to run a proper A/B Test</h2>
                 <p>"Let's just run a test." -every startup ever</p>
                 <p>Testing gets thrown around a lot at companies, but many people don't appreciate what are good test candidates and how much effort and time are required to run a proper test.</p>
                 <p>What is an A/B test?</p>
@@ -76,7 +76,7 @@ class About extends Component {
                 <p>In the above example, we can see our test version won and we have 90% confidence the change is due to efforts and not chance.</p>
                 <p>What happens when the results are not stasticial significant?</p>
                 <p><img src="/images/writing/chapterthree/testresults2.png" /></p>
-                <p>While a successful test is great, we find ourselves in the gray area where the test is not sucessful becuase it is not stastically significant. In other words, we can't tell if the change is actully due to our efforts or something else. When we find ourselves in this situation we can allow the test to contineut to run to collect addtional data, accecpt the test, or reject the test. When possible, I like to continue to collect data as stastical signficance is important to me, it's like setting a solid foundation to build upon. Each situation and team will be differnt here.<p>
+                <p>While a successful test is great, we find ourselves in the gray area where the test is not sucessful becuase it is not stastically significant. In other words, we can't tell if the change is actully due to our efforts or something else. When we find ourselves in this situation we can allow the test to contineut to run to collect addtional data, accecpt the test, or reject the test. When possible, I like to continue to collect data as stastical signficance is important to me, it's like setting a solid foundation to build upon. Each situation and team will be differnt here.</p>
                 <p>Feel free to reach out with any questions. I’d love to hear about your success with A/B tests!</p>
                 <br /><br />
               </div>

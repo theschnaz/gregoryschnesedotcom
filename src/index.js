@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import ChapterOne from './Components/writing/chapterone';
 import ChapterTwo from './Components/writing/chaptertwo';
-import ChapterTwo from './Components/writing/chapterthree';
+import ChapterThree from './Components/writing/chapterthree';
 import registerServiceWorker from './registerServiceWorker';
 
 const routing = (

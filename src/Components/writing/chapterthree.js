@@ -22,7 +22,7 @@ class About extends Component {
 
     return (
       <div>
-        <header id="home" className="toc2">
+        <header id="home" className="toc3">
           <nav id="nav-wrap">
             <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
 	          <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
@@ -51,32 +51,35 @@ class About extends Component {
                 </center>
               </div>
               <div className="nine columns main-col">
-                <h2>How to run a proper A/B Test</h2>
+                <h2>How to Run a Proper A/B Test</h2>
                 <p>"Let's just run a test." -every startup ever</p>
-                <p>Testing gets thrown around a lot at companies, but many people don't appreciate what are good test candidates and how much effort and time are required to run a proper test.</p>
-                <p>What is an A/B test?</p>
-                <p>In simple terms, an A/B test is used to see how a change impacts a metric. If we change our signup button from green to blue, how does that impact our signup rate? We use an A/B test, where the only difference between our two groups is the change we introduced. This way, any extraneous events (news, seasonality, etc.) will impact both groups equally so we can focus only on the change we introduce.</p>
-                <p>To run a proper A/B test we need to anticipate what we expect the impact to be, calculate our required sample size, and then see if the results are statically significant. Sample size and statistical significance are important because we want to make sure change in results is caused by our actions and not something else, or something random.</p>
-                <p>In general, the larger the impact of a test will be, the smaller the required sample size will be. This is just a fancy way of saying when you have lower amounts of traffic, you want to see bigger changes in your tests. You want to swing for the fences here as the number of people needed to run a proper test decreases. We'll get into that more below.</p>
-                <p>What are things people don't know about A/B tests?</p>
+                <p>Testing gets thrown around a lot at companies, but many people don't appreciate what are good test candidates and how much time is required to run a proper test.</p>
+                <p><strong>What is an A/B test?</strong></p>
+                <p>In simple terms, an A/B test is used to see how a change impacts a metric. If we change our signup button from green to blue, how does that impact our signup rate? By using two (A or B) or more groups, any extraneous influences (news, seasonality, etc.) will impact both groups equally so we can focus only on the change we introduce. We isolate our change so it is the only difference between the groups. This way, we can be confident the change in metrics is due to our effort.</p>
+                <p><strong>First A/B Test</strong></p>
+                <p>To run a proper A/B test we need to anticipate what we expect the impact to be, calculate our required sample size, and then see if the results are statically significant. Sample size and statistical significance are important because we want to make sure the change in a metric is caused by our actions and not something else.</p>
+                <p>In general, the larger the impact of a test, the smaller the required sample size. This is just a fancy way of saying when we have lower amounts of traffic, we want to see bigger changes in our tests. Think of improving our metric by 30% or more, not by 5%. With low traffic, we need big wins to finish a test within an acceptable amount of time.</p>
+                <p><strong>People are Bad at A/B Tests</strong></p>
                 <p>People generally underestimate the amount of traffic (time) required to generate a proper sample size.</p>
-                <p>According to <a href="https://www.abtasty.com/sample-size-calculator/">abtasty.com</a> you would need 30,244 people per test bucket (60,488 in total) to detect a 10% change in a metric, with 95% stasticial signifiance:</p>
+                <p>According to <a target="_blank" href="https://www.abtasty.com/sample-size-calculator/">abtasty.com</a> we would need 30,244 people per test group (60,488 in total) to detect a 10% change, with 95% statistical significance, given a 5% starting conversion rate:</p>
                 <p><img src="/images/writing/chapterthree/samplesize1.png" /></p>
-                <p>To detect a 30% lift, you would only need 3,449 people per group or 6,898 in total.</p>
+                <p>How long does it take to generate over 60k unique visitors? Probably too long...</p>
                 <p><img src="/images/writing/chapterthree/samplesize2.png" /></p>
-                <p>What does this mean on a day to day basis for a growth marketer? When our traffic for a test is low, we want the outcome of the test to be more dramtic. We want to target improvements around 30% or higher. We need to have some reason to think our test could deliver a gain like this, if it can't, we need to think of a new idea to test.</p>
-                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Since your startup has less traffic, that means test duration is inherently longer. Making small changes (like moving a button) compounds that issue since it’s a small relative change on a small sample size. Resolving a test with 5% lift could take months. That’s useless.</p>&mdash; Andy Johns (@ibringtraffic) <a href="https://twitter.com/ibringtraffic/status/1215752564924268545?ref_src=twsrc%5Etfw">January 10, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                <p>An example of a proper A/B test</p>
+                <p>To detect a 30% lift, we would only need 3,449 people per group or 6,898 in total.</p>
+                <p>What does this mean on a day-to-day basis for a growth marketer? When our traffic for a test is low, we want the outcome to be dramatic. We want to target improvements 30% or higher. We need to have some reason to think our test could deliver a gain like this, if it can't, we need to think of a new idea.</p>
+                <blockquote ><p lang="en" dir="ltr">Since your startup has less traffic, that means test duration is inherently longer. Making small changes (like moving a button) compounds that issue since it’s a small relative change on a small sample size. Resolving a test with 5% lift could take months. That’s useless.</p>&mdash; Andy Johns (@ibringtraffic) <a target="_blank" href="https://twitter.com/ibringtraffic/status/1215752564924268545?ref_src=twsrc%5Etfw">January 10, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+                <p><strong>A Proper A/B Test</strong></p>
                 <p><img src="/images/writing/chapterthree/sampletest.png" /></p>
-                <p>Let's say we want to increase the View Homepage -> Newsletter Signup rate for this site. The above example (controll on the left, test on the right) would be a good test to run. The anticipated change is large so the overall sample size is relaitvly small:</p>
+                <p>Let's say we want to increase the View Homepage -> Newsletter Signup rate for this site. The above example (control on the left, test on the right) would be a good test to run. The anticipated change is large so the overall sample size is relatively small:</p>
                 <p><img src="/images/writing/chapterthree/samplesize3.png" /></p>
                 <p>Assuming we want to increase the Newsletter Signup rate by 40%, with 500 visitors per day, we could run this test for 20 days. This sounds reasonable.</p>
+                <p><strong>Statistical Significance</strong></p>
                 <p><img src="/images/writing/chapterthree/testresults.png" /></p>
-                <p>After 20 days, we plug our numbers into a <a href="https://www.socscistatistics.com/tests/ztest/default2.aspx">stasticial significance calculator</a></p>
-                <p>In the above example, we can see our test version won and we have 90% confidence the change is due to efforts and not chance.</p>
-                <p>What happens when the results are not stasticial significant?</p>
+                <p>After 20 days, we plug our numbers into a <a href="https://www.socscistatistics.com/tests/ztest/default2.aspx">statistical significance calculator</a> (above.)</p>
+                <p>In our example, we can see our test version won and we have 95% confidence the change is due to our efforts and not chance.</p>
+                <p>What happens when the results are not statistically significant?</p>
                 <p><img src="/images/writing/chapterthree/testresults2.png" /></p>
-                <p>While a successful test is great, we find ourselves in the gray area where the test is not sucessful becuase it is not stastically significant. In other words, we can't tell if the change is actully due to our efforts or something else. When we find ourselves in this situation we can allow the test to contineut to run to collect addtional data, accecpt the test, or reject the test. When possible, I like to continue to collect data as stastical signficance is important to me, it's like setting a solid foundation to build upon. Each situation and team will be differnt here.</p>
+                <p>While a successful test is great, we sometimes find ourselves in this gray area where we haven't reached statistical significance. In other words, we can't tell if the change is actually due to our efforts or something else. To address this, we can allow the test to continue to collect data, accept the test, or reject the test. When possible, I like to continue to collect data as statistical significance is important to me, it's like setting a solid foundation to build upon. Each situation and team will be different here.</p>
                 <p>Feel free to reach out with any questions. I’d love to hear about your success with A/B tests!</p>
                 <br /><br />
               </div>

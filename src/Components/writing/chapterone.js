@@ -61,14 +61,13 @@ class About extends Component {
                 </p>
                 <p>While this is easy to understand, it’s much harder to implement and actually generate marketing value. In this chapter, we’ll look at which steps we can take to build our marketing machine so we can generate a high return on ad spend (aka yield).</p>
                 <p>At the beginning, the problem is volume or frequency of events. We need data to do fancy bidding like ROAS but when we're starting out, we don't have a large dataset and we can't generate it quickly enough. What's a SaaS marketer to do?</p>
-                <p>Let’s say we have the following marketing funnel:
-                	<ol>
-                		<li>Suspect (landing page visitors, etc.)</li>
-                		<li>MQL (marketing qualified lead)</li>
-                		<li>SAL (sales accepted lead)</li>
-                		<li>Customer (someone who can generate recurring revenue)</li>
-                	</ol>
-                </p>
+                <p>Let’s say we have the following marketing funnel:</p>
+              	<ol>
+              		<li>Suspect (landing page visitors, etc.)</li>
+              		<li>MQL (marketing qualified lead)</li>
+              		<li>SAL (sales accepted lead)</li>
+              		<li>Customer (someone who can generate recurring revenue)</li>
+              	</ol>
                 <p>We’ll have many more suspects than customers, sometimes as much as 100x. ROAS bidding assumes we have enough sales or customer data to pass back to an ad partner which will use this data to optimize our campaign.</p>
                 <p>When we aren’t generating enough sales or customer events, we'll need to look higher up the funnel to a place where we generate enough volume of events. At minimum, we want at least 30 events per week. We can continue to move up our funnel until we find an event that generates enough volume.</p>
                 <p>Now that we have selected the event, we’ll use the MQL event for this example, how do we calculate a return on MQL events? (This will be used as an approximation of events further down the funnel.)</p>

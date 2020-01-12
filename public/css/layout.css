@@ -46,6 +46,9 @@ header {
 .toc2 {
   background: #161415 url(../images/writing/chaptertwo/background.jpg) no-repeat center;
 }
+.toc3 {
+  background: #161415 url(../images/writing/chapterthree/background.jpg) no-repeat center;
+}
 
 /* vertically center banner section */
 header:before {
@@ -1048,7 +1051,7 @@ call-to-action .button {
 footer {
    padding-top: 48px;
    margin-bottom: 48px;
-   color: #303030;
+   color: #686868;
    font-size: 14px;
    text-align: center;
    position: relative;

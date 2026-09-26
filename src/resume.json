@@ -1,0 +1,120 @@
+{
+  "main": {
+    "name": "Gregory Schnese",
+    "headline": "I make SaaS companies grow.",
+    "tagline": ["Growth Marketing", "React & Rails", "Cards"],
+    "intro": "I help SaaS companies grow profitably, by analyzing data and writing the software that turns it into results.",
+    "bio": [
+      "I make SaaS companies grow their profits and help them grow more efficiently. To do this, I analyze data and write software to hit some pretty remarkable targets.",
+      "At kikin, a contextual search company, I profitably grew the userbase from 300k to 2mm MAUs. At CoPromote, a marketing service for creators, I increased recurring monthly revenue 4x. I'm currently doing the same things at Fleetio."
+    ],
+    "poker": "Did you know the odds of flopping a flush, in hold 'em, are 1:118?",
+    "image": "profilepic.jpg",
+    "email": "theschnaz@gmail.com",
+    "resumedownload": "https://drive.google.com/file/d/1enoSouahJMpi7AZiYLqMfxg5uQrH6lhM/view",
+    "social": [
+      { "name": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/gregory-schnese-608a952" },
+      { "name": "github", "label": "GitHub", "url": "https://github.com/theschnaz" },
+      { "name": "twitter", "label": "X / Twitter", "url": "https://twitter.com/theschnaz" }
+    ]
+  },
+  "impact": [
+    { "value": "300k → 2M", "label": "Monthly active users", "context": "Grown profitably at kikin" },
+    { "value": "4×", "label": "Recurring monthly revenue", "context": "At CoPromote" },
+    { "value": "90%+", "label": "Yield on $1M+ paid budget", "context": "At Fleetio" },
+    { "value": "2×", "label": "Trial → paid conversion", "context": "B2B SaaS at Fleetio" }
+  ],
+  "work": [
+    {
+      "company": "Fleetio",
+      "title": "Acquisition & Growth",
+      "years": "Apr 2018 – Present",
+      "highlights": [
+        "Returned over 90% yield (value) with a paid budget of over $1mm.",
+        "Doubled trial start to paying customer rate (B2B SaaS product)."
+      ]
+    },
+    {
+      "company": "CoPromote",
+      "title": "Head of Marketing",
+      "years": "Sep 2013 – Mar 2018",
+      "highlights": [
+        "Built the marketing and growth team from the ground up.",
+        "Led acquisition, activation, conversion, and retention for over 700k members.",
+        "Increased recurring monthly revenue 4x."
+      ]
+    },
+    {
+      "company": "kikin",
+      "title": "",
+      "years": "",
+      "highlights": [
+        "Profitably grew the userbase from 300k to 2mm MAUs.",
+        "Built Watchlr, a video saving and sharing service."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "group": "Growth",
+      "items": ["Paid acquisition", "Yield & ROAS bidding", "Funnel analytics", "A/B testing", "Segmentation", "Lookalike audiences", "Lifecycle & retention"]
+    },
+    {
+      "group": "Engineering",
+      "items": ["React", "Ruby on Rails", "Vue", "HTML & CSS", "MongoDB", "Git", "Segment"]
+    },
+    {
+      "group": "Design",
+      "items": ["Illustrator", "Landing pages", "Creative testing"]
+    }
+  ],
+  "education": [
+    { "school": "New York University", "degree": "M.S. in Management and Systems", "graduated": "2007" },
+    { "school": "University of Wisconsin – Milwaukee", "degree": "B.S. in Information Resources", "graduated": "2004" }
+  ],
+  "projects": [
+    {
+      "title": "CreatorsPromote",
+      "type": "Product",
+      "description": "Marketing for creators and influencers via cross-promotion.",
+      "image": "creatorspromote.jpg",
+      "url": "https://www.creatorspromote.com"
+    },
+    {
+      "title": "Democracy Follows",
+      "type": "Side project",
+      "description": "A personalized weekly newsletter about the people who represent you in government.",
+      "image": "democracyfollows.jpg",
+      "url": "https://github.com/theschnaz/democracyfollows"
+    },
+    {
+      "title": "Coovents",
+      "type": "Talk",
+      "description": "Presenting Coovents at the IAC building in New York. I built the backend and API.",
+      "image": "coovents.jpg",
+      "url": "https://drive.google.com/file/d/1_Td4vL5xv86TynkIy9j5W_IPRYyd3W6T/view?usp=sharing"
+    },
+    {
+      "title": "Watchlr",
+      "type": "Talk",
+      "description": "Presenting Watchlr, a video saving and sharing service created at kikin.",
+      "image": "watchlr.jpg",
+      "url": "https://drive.google.com/file/d/1coW6bnZtc3EEWnQK2pFU280glbOnSnxh/view?usp=sharing"
+    },
+    {
+      "title": "Likely",
+      "type": "Mobile game",
+      "description": "A mobile game that asks the question: which is likely better?",
+      "image": "likely.jpg",
+      "url": "https://github.com/theschnaz/likely_backend"
+    },
+    {
+      "title": "Drinkspottings",
+      "type": "Mobile app",
+      "description": "Share and snap photos of your favorite drinks.",
+      "image": "drinkspottings.jpg",
+      "url": "https://github.com/theschnaz/drinkspottings"
+    }
+  ],
+  "testimonials": []
+}

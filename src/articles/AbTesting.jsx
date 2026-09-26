@@ -1,0 +1,35 @@
+export default function AbTesting() {
+  return (
+    <>
+      <p>"Let's just run a test." -every startup ever</p>
+      <p>Testing gets thrown around a lot at companies, but many people don't appreciate what are good test candidates and how much time is required to run a proper test.</p>
+      <h2>What is an A/B Test?</h2>
+      <p>In simple terms, an A/B test is used to see how a change impacts a metric. If we change our signup button from green to blue, how does that impact our signup rate? By using two (A or B) or more groups, any extraneous influences (news, seasonality, etc.) will impact both groups equally so we can focus only on the change we introduce. We isolate our change so it is the only difference between the groups. This way, we can be confident the change in metrics is due to our effort.</p>
+      <h2>First A/B Test</h2>
+      <p>To run a proper A/B test we need to anticipate what we expect the impact to be, calculate our required sample size, and then see if the results are statically significant. Sample size and statistical significance are important because we want to make sure the change in a metric is caused by our actions and not something else.</p>
+      <p>In general, the larger the impact of a test, the smaller the required sample size. This is just a fancy way of saying when we have lower amounts of traffic, we want to see bigger changes in our tests. Think of improving our metric by 30% or more, not by 5%. With low traffic, we need big wins to finish a test within an acceptable amount of time.</p>
+      <h2>People are Bad at A/B Tests</h2>
+      <p>People generally underestimate the amount of traffic (time) required to generate a proper sample size.</p>
+      <p>According to <a target="_blank" rel="noreferrer" href="https://www.abtasty.com/sample-size-calculator/">abtasty.com</a> we would need 30,244 people per test group (60,488 in total) to detect a 10% change, with 95% statistical significance, given a 5% starting conversion rate:</p>
+      <figure><img src="/images/writing/chapterthree/samplesize1.png" alt="Sample size needed to detect a 10% lift" loading="lazy" /></figure>
+      <p>How long does it take to generate over 60k unique visitors? Probably too long...</p>
+      <figure><img src="/images/writing/chapterthree/samplesize2.png" alt="Time required to reach sample size" loading="lazy" /></figure>
+      <p>To detect a 30% lift, we would only need 3,449 people per group or 6,898 in total.</p>
+      <p>What does this mean on a day-to-day basis for a growth marketer? When our traffic for a test is low, we want the outcome to be dramatic. We want to target improvements 30% or higher. We need to have some reason to think our test could deliver a gain like this, if it can't, we need to think of a new idea.</p>
+      <blockquote><p lang="en" dir="ltr">Since your startup has less traffic, that means test duration is inherently longer. Making small changes (like moving a button) compounds that issue since it’s a small relative change on a small sample size. Resolving a test with 5% lift could take months. That’s useless.</p><footer>— Andy Johns (@ibringtraffic), <a target="_blank" rel="noreferrer" href="https://twitter.com/ibringtraffic/status/1215752564924268545?ref_src=twsrc%5Etfw">January 10, 2020</a></footer></blockquote>
+      <h2>A Proper A/B Test</h2>
+      <figure><img src="/images/writing/chapterthree/sampletest.png" alt="Control and test versions of the newsletter signup" loading="lazy" /></figure>
+      <p>Let's say we want to increase the View Homepage → Newsletter Signup rate for this site. The above example (control on the left, test on the right) would be a good test to run. The anticipated change is large so the overall sample size is relatively small:</p>
+      <figure><img src="/images/writing/chapterthree/samplesize3.png" alt="Sample size needed to detect a 40% lift" loading="lazy" /></figure>
+      <p>Assuming we want to increase the Newsletter Signup rate by 40%, with 500 visitors per day, we could run this test for 20 days. This sounds reasonable.</p>
+      <h2>Statistical Significance</h2>
+      <figure><img src="/images/writing/chapterthree/testresults.png" alt="Statistically significant test results" loading="lazy" /></figure>
+      <p>After 20 days, we plug our numbers into a <a target="_blank" rel="noreferrer" href="https://www.socscistatistics.com/tests/ztest/default2.aspx">statistical significance calculator</a> (above.)</p>
+      <p>In our example, we can see our test version won and we have 95% confidence the change is due to our efforts and not chance.</p>
+      <p>What happens when the results are not statistically significant?</p>
+      <figure><img src="/images/writing/chapterthree/testresults2.png" alt="Test results that are not statistically significant" loading="lazy" /></figure>
+      <p>While a successful test is great, we sometimes find ourselves in this gray area where we haven't reached statistical significance. In other words, we can't tell if the change is actually due to our efforts or something else. To address this, we can allow the test to continue to collect data, accept the test, or reject the test. When possible, I like to continue to collect data as statistical significance is important to me, it's like setting a solid foundation to build upon. Each situation and team will be different here.</p>
+      <p>Feel free to reach out with any questions. I’d love to hear about your success with A/B tests!</p>
+    </>
+  );
+}

@@ -39,28 +39,28 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:Inter;src:url(data:font/woff2;base64,${font}) format('woff2');font-weight:100 900}
 @font-face{font-family:Mono;src:url(data:font/woff2;base64,${mono}) format('woff2');font-weight:100 900}
 *{box-sizing:border-box;margin:0}
-html,body{width:${W}px;height:${H}px;overflow:hidden;background:#121210}
-body{font-family:Inter;color:#f4f2ec;position:relative;-webkit-font-smoothing:antialiased}
-.grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(244,242,236,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(244,242,236,.05) 1px,transparent 1px);background-size:48px 48px}
-.glow{position:absolute;width:760px;height:760px;right:-200px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(251,146,60,.32),rgba(251,146,60,0) 65%)}
-.rule{position:absolute;left:0;top:0;width:10px;background:#fb923c}
-.eyebrow{position:absolute;left:80px;top:56px;font:500 21px/1 Mono;letter-spacing:.14em;text-transform:uppercase;color:#a3a19b;display:flex;align-items:center;gap:14px}
-.eyebrow i{width:12px;height:12px;border-radius:50%;background:#fb923c;display:block}
+html,body{width:${W}px;height:${H}px;overflow:hidden;background:#fbfaf7}
+body{font-family:Inter;color:#141412;position:relative;-webkit-font-smoothing:antialiased}
+.grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(20,20,18,.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(20,20,18,.06) 1px,transparent 1px);background-size:48px 48px}
+.glow{position:absolute;width:760px;height:760px;right:-200px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(251,146,60,.22),rgba(251,146,60,0) 65%)}
+.rule{position:absolute;left:0;top:0;width:10px;background:#c2410c}
+.eyebrow{position:absolute;left:80px;top:56px;font:500 21px/1 Mono;letter-spacing:.14em;text-transform:uppercase;color:#5c5a55;display:flex;align-items:center;gap:14px}
+.eyebrow i{width:12px;height:12px;border-radius:50%;background:#c2410c;display:block}
 .mark{position:absolute;right:72px;top:52px;font:700 26px/1 Inter}
-.mark span{color:#fb923c}
+.mark span{color:#c2410c}
 h1{position:absolute;left:80px;top:118px;width:700px;font:800 62px/1.05 Inter;letter-spacing:-.04em}
 h1 span{display:inline-block;margin-right:.24em}
-h1 .soft{color:#a3a19b}
+h1 .soft{color:#5c5a55}
 .photo{position:absolute;right:88px;top:118px;width:270px;height:270px}
-.photo .back{position:absolute;inset:0;border-radius:40px;background:#c2410c}
+.photo .back{position:absolute;inset:0;border-radius:40px;background:#fb923c}
 .photo img{position:absolute;inset:0;width:270px;height:270px;border-radius:40px;object-fit:cover}
-.proof{position:absolute;left:80px;right:72px;bottom:52px;display:flex;justify-content:space-between;border-top:1px solid rgba(244,242,236,.12);padding-top:24px}
+.proof{position:absolute;left:80px;right:72px;bottom:52px;display:flex;justify-content:space-between;border-top:1px solid rgba(20,20,18,.10);padding-top:24px}
 .proof div{width:240px}
 .proof b{display:block;font:800 46px/1 Inter;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.proof b em{font-style:normal;color:#fb923c}
-.proof small{display:block;margin-top:8px;font:500 17px/1.2 Inter;color:#a3a19b}
-.url{position:absolute;left:80px;top:418px;display:flex;gap:14px;align-items:center;font:500 22px/1 Inter;color:#a3a19b}
-.url b{color:#121210;background:#fb923c;border-radius:999px;padding:10px 18px;font:700 20px/1 Inter}
+.proof b em{font-style:normal;color:#c2410c}
+.proof small{display:block;margin-top:8px;font:500 17px/1.2 Inter;color:#5c5a55}
+.url{position:absolute;left:80px;top:418px;display:flex;gap:14px;align-items:center;font:500 22px/1 Inter;color:#5c5a55}
+.url b{color:#ffffff;background:#c2410c;border-radius:999px;padding:10px 18px;font:700 20px/1 Inter}
 </style></head><body>
 <div class="glow" id="glow"></div><div class="grid"></div><div class="rule" id="rule"></div>
 <div class="eyebrow" id="eyebrow"><i></i>Director of Demand Generation · FMX</div>
@@ -87,7 +87,7 @@ window.render = (t) => {
   const ph = seg(t, 2.0, 2.8);
   $('photo').style.opacity = ph; $('photo').style.transform = 'translateX(' + (1 - ph) * 40 + 'px)';
   const bk = seg(t, 2.5, 3.1) * 16; $('back').style.transform = 'translate(' + bk + 'px,' + bk + 'px)';
-  const pr = seg(t, 2.9, 3.4); $('proof').style.opacity = pr; $('proof').style.borderTopColor = 'rgba(244,242,236,' + 0.12 * pr + ')';
+  const pr = seg(t, 2.9, 3.4); $('proof').style.opacity = pr; $('proof').style.borderTopColor = 'rgba(20,20,18,' + 0.10 * pr + ')';
   [...$('proof').children].forEach((d, i) => {
     const k = seg(t, 3.0 + i * 0.35, 4.2 + i * 0.35);
     d.querySelector('span').textContent = Math.round(proof[i].value * k);

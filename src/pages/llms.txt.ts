@@ -13,7 +13,7 @@ export async function GET() {
 
 > ${site.description}
 
-${site.name} is ${site.jobTitle} at ${site.employer.name}, based in ${site.location}. Contact: ${site.email}.
+${site.name} is ${site.jobTitle} at ${site.employer.name}. Contact: ${site.email}.
 
 ## Case studies
 ${work.map((w) => `- [${w.data.title}](${u(`/work/${w.id}`)}): ${w.data.summary}`).join('\n')}

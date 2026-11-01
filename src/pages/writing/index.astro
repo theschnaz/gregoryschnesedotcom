@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHeader from '@/components/PageHeader.astro';
-import { formatDate } from '@/lib/format';
 
 const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -14,11 +13,9 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
     <ol class="divide-y divide-line border-y border-line dark:divide-night-line dark:border-night-line">
       {posts.map((p) => (
         <li data-reveal>
-          <a href={`/writing/${p.id}`} class="group grid gap-2 py-8 sm:grid-cols-[10rem_1fr] sm:gap-10">
-            <p class="eyebrow pt-1.5"><time datetime={p.data.pubDate.toISOString()}>{formatDate(p.data.pubDate, 'short')}</time></p>
+          <a href={`/writing/${p.id}`} class="group block py-8">
             <div>
-              {p.data.series && <p class="text-sm text-accent dark:text-night-accent">{p.data.series}{p.data.seriesPart && ` · Lesson ${p.data.seriesPart}`}</p>}
-              <h2 class="mt-1 text-2xl font-semibold tracking-tight text-balance group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4">{p.data.title}</h2>
+              <h2 class="text-2xl font-semibold tracking-tight text-balance group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4">{p.data.title}</h2>
               <p class="mt-2 max-w-2xl text-pretty text-muted dark:text-night-muted">{p.data.description}</p>
             </div>
           </a>

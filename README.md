@@ -24,7 +24,7 @@ Node 22.12+ is required.
 | Resume (HTML `/resume` + About sidebar) | `src/data/resume.ts`, PDF in `public/` |
 | Case studies `/work/*` | `src/content/work/*.mdx` |
 | Projects `/projects/*` | `src/content/projects/*.mdx` |
-| Writing `/writing/*` + RSS | `src/content/writing/*.mdx` |
+| Writing `/writing/*` | `src/content/writing/*.mdx` |
 | `/now` (newest entry wins) | `src/content/now/YYYY-MM.mdx` |
 | Design tokens | `src/styles/global.css` (`@theme`) |
 | JSON-LD (ProfilePage / Person / BlogPosting) | `src/lib/schema.ts` |

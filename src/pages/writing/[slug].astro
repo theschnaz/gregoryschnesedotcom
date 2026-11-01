@@ -2,7 +2,6 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { formatDate } from '@/lib/format';
 import { article } from '@/lib/schema';
 import { site } from '@/site';
 import profile from '@/assets/profile.jpg';
@@ -20,8 +19,6 @@ const jsonLd = article({
   title: d.title,
   description: d.description,
   url,
-  datePublished: d.pubDate,
-  dateModified: d.updatedDate,
   image: new URL(`/og/writing/${entry.id}.png`, site.url).href,
 });
 ---
@@ -37,10 +34,7 @@ const jsonLd = article({
           <Image src={profile} alt="" width={40} height={40} class="size-10 rounded-full" />
           <div>
             <p class="font-medium">{site.name}</p>
-            <p class="text-muted dark:text-night-muted">
-              <time datetime={d.pubDate.toISOString()}>{formatDate(d.pubDate)}</time>
-              {d.updatedDate && <> · Updated <time datetime={d.updatedDate.toISOString()}>{formatDate(d.updatedDate)}</time></>}
-            </p>
+            <p class="text-muted dark:text-night-muted">{site.jobTitle}, {site.employer.name}</p>
           </div>
         </div>
       </div>

@@ -101,7 +101,7 @@ export const skills = [
   'Experimentation / A/B testing',
   'Lifecycle & trial conversion',
   'SEO & content',
-  'SQL & BI',
   'React / React Native',
+  'Analytics & BI',
   'Building with AI coding agents',
 ];

@@ -13,7 +13,6 @@ export const site = {
     'Gregory Schnese is a B2B SaaS demand generation leader with 15+ years in growth. Director of Demand Generation at FMX; previously scaled inbound ARR 10x at Fleetio. He also builds software: Day and BitStack.',
   jobTitle: 'Director of Demand Generation',
   employer: { name: 'FMX', url: 'https://www.gofmx.com' },
-  location: 'Northern Virginia',
   email: 'theschnaz@gmail.com',
 
   /**
@@ -72,7 +71,7 @@ export const principles = [
   },
   {
     title: 'Ship the tool yourself',
-    body: 'The fastest growth teams don’t wait on a ticket queue. I write the SQL, the tracking code and, increasingly, the product, with AI agents as the team.',
+    body: 'The fastest growth teams don’t wait on a ticket queue. I build in React and React Native myself: the landing pages, the tracking and, increasingly, the product, with AI agents as the team.',
   },
 ] as const;
 

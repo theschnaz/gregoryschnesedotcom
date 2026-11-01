@@ -15,7 +15,6 @@ export function person() {
     description: site.description,
     jobTitle: site.jobTitle,
     worksFor: { '@type': 'Organization', name: site.employer.name, url: site.employer.url },
-    homeLocation: { '@type': 'Place', name: site.location },
     alumniOf: [
       { '@type': 'CollegeOrUniversity', name: 'New York University' },
       { '@type': 'CollegeOrUniversity', name: 'University of Wisconsin–Milwaukee' },
@@ -49,8 +48,6 @@ export function article(opts: {
   title: string;
   description: string;
   url: string;
-  datePublished: Date;
-  dateModified?: Date;
   image: string;
 }) {
   return {
@@ -60,8 +57,6 @@ export function article(opts: {
     description: opts.description,
     url: opts.url,
     image: opts.image,
-    datePublished: opts.datePublished.toISOString(),
-    dateModified: (opts.dateModified ?? opts.datePublished).toISOString(),
     author: { '@id': personId, '@type': 'Person', name: site.name, url: site.url },
   };
 }

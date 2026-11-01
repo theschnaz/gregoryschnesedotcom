@@ -2,51 +2,81 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHeader from '@/components/PageHeader.astro';
 import { site } from '@/site';
-const field = 'mt-2 w-full rounded-xl border border-line bg-card px-4 py-3 text-base outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 dark:border-night-line dark:bg-night-card dark:focus:border-night-accent';
+
+const linkedin = site.social.find((s) => s.name === 'LinkedIn')!;
+const others = site.social.filter((s) => s.name !== 'LinkedIn');
 ---
-<BaseLayout title="Contact" description="Get in touch with Gregory Schnese about demand generation, advisory work or anything on this site.">
-  <PageHeader eyebrow="Contact" title="Get in touch." lede="Recruiter, founder, fellow growth person or newsletter reader: email is the best way to reach me. I usually reply within a few days." />
-  <section class="container-page grid gap-12 lg:grid-cols-[1fr_22rem]">
-    <form id="contact-form" action={`mailto:${site.email}`} method="post" enctype="text/plain" class="card max-w-2xl space-y-5 p-7 sm:p-9">
-      <div>
-        <label for="name" class="text-sm font-medium">Name</label>
-        <input id="name" name="name" required autocomplete="name" class={field} />
+<BaseLayout title="Contact" description="Reach Gregory Schnese by email or LinkedIn about demand generation, advisory work or anything on this site.">
+  <PageHeader
+    eyebrow="Contact"
+    title="The best way to reach me."
+    lede="Recruiter, founder, fellow growth person or reader: email or LinkedIn both get to me directly. I usually reply within a few days."
+  />
+  <section class="container-page grid gap-5 md:grid-cols-2">
+    <div class="card flex flex-col p-8 sm:p-10" data-reveal>
+      <div class="flex items-center gap-3">
+        <span class="grid size-11 place-items-center rounded-full bg-accent-soft text-accent dark:bg-night-accent-soft dark:text-night-accent" aria-hidden="true">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+        </span>
+        <h2 class="eyebrow">Email</h2>
       </div>
-      <div>
-        <label for="email" class="text-sm font-medium">Email</label>
-        <input id="email" name="email" type="email" required autocomplete="email" class={field} />
+      <p class="mt-8 text-2xl font-semibold tracking-tight break-all sm:text-3xl">{site.email}</p>
+      <p class="mt-3 flex-1 text-pretty text-muted dark:text-night-muted">Best for advisory inquiries, roles and anything that needs more than a few lines.</p>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href={`mailto:${site.email}`}
+          class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-px dark:bg-night-accent dark:text-night"
+          data-event="email_click"
+        >Send an email</a>
+        <button
+          type="button"
+          id="copy-email"
+          data-email={site.email}
+          class="rounded-full px-5 py-3 text-sm font-medium ring-1 ring-line transition-colors hover:ring-ink dark:ring-night-line dark:hover:ring-night-ink"
+        >Copy address</button>
+        <span id="copy-status" class="text-sm text-muted dark:text-night-muted" role="status" aria-live="polite"></span>
       </div>
-      <div>
-        <label for="message" class="text-sm font-medium">What are you working on?</label>
-        <textarea id="message" name="message" rows="5" required class={field}></textarea>
+    </div>
+
+    <div class="card flex flex-col p-8 sm:p-10" data-reveal>
+      <div class="flex items-center gap-3">
+        <span class="grid size-11 place-items-center rounded-full bg-accent-soft text-accent dark:bg-night-accent-soft dark:text-night-accent" aria-hidden="true">
+          <svg class="size-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" /></svg>
+        </span>
+        <h2 class="eyebrow">LinkedIn</h2>
       </div>
-      <button type="submit" class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-px dark:bg-night-accent dark:text-night" data-event="contact_submit">Send message</button>
-      <p class="text-sm text-muted dark:text-night-muted">This opens your email app with the message filled in.</p>
-    </form>
-    <aside class="space-y-8 text-sm">
-      <div>
-        <p class="eyebrow">Email</p>
-        <a href={`mailto:${site.email}`} class="link-accent mt-2 inline-block text-base">{site.email}</a>
+      <p class="mt-8 text-2xl font-semibold tracking-tight sm:text-3xl">Gregory Schnese</p>
+      <p class="mt-3 flex-1 text-pretty text-muted dark:text-night-muted">Connect or send a message. Mention this site so I know where you found me.</p>
+      <div class="mt-8">
+        <a
+          href={linkedin.url}
+          target="_blank"
+          rel="me noopener"
+          class="inline-block rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper transition-transform hover:-translate-y-px dark:bg-night-ink dark:text-night"
+          data-event="linkedin_click"
+        >Message me on LinkedIn ↗</a>
       </div>
-      <div>
-        <p class="eyebrow">Elsewhere</p>
-        <ul class="mt-2 space-y-1 text-base">
-          {site.social.map((s) => <li><a href={s.url} rel="me noopener" target="_blank" class="link-accent">{s.name}</a></li>)}
-        </ul>
-      </div>
-      <div>
-        <p class="eyebrow">Based in</p>
-        <p class="mt-2 text-base">{site.location}</p>
-      </div>
-    </aside>
+    </div>
   </section>
-  <script define:vars={{ email: site.email }}>
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const f = new FormData(e.currentTarget);
-      const subject = `Hello from ${f.get('name')}`;
-      const body = `${f.get('message')}\n\n— ${f.get('name')} (${f.get('email')})`;
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  <section class="container-page mt-12">
+    <p class="text-sm text-muted dark:text-night-muted">
+      Also on{' '}
+      {others.map((s, i) => (
+        <>{i > 0 && ' and '}<a href={s.url} target="_blank" rel="me noopener" class="link-accent">{s.name}</a></>
+      ))}.
+    </p>
+  </section>
+  <script>
+    const btn = document.getElementById('copy-email') as HTMLButtonElement;
+    const status = document.getElementById('copy-status')!;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.email!);
+        status.textContent = 'Copied';
+      } catch {
+        status.textContent = 'Press Ctrl/Cmd+C to copy';
+      }
+      setTimeout(() => (status.textContent = ''), 2500);
     });
   </script>
 </BaseLayout>

@@ -63,15 +63,15 @@ export const projects = [
     name: 'Bitcoin, Borrow, Die',
     role: 'Founder',
     period: 'Dec 2024 – present',
-    href: '/projects/bitcoin-borrow-die',
+    href: 'https://bitcoinborrowdie.com',
     description: 'Financial modeling tool and weekly newsletter simulating a wealth strategy that uses Bitcoin as collateral.',
   },
   {
-    name: 'margin-watch',
+    name: 'BitStack',
     role: 'Founder',
-    period: '2025 – present',
-    href: '/projects/margin-watch',
-    description: 'Loan-to-value monitoring and alerts for Bitcoin-backed loans.',
+    period: '2026 – present',
+    href: '/projects/bitstack',
+    description: 'Bitcoin portfolio tracker and planning app with Bitcoin-backed loan monitoring and liquidation alerts.',
   },
 ];
 

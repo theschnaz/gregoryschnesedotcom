@@ -15,8 +15,8 @@ This site is a verification layer: someone who looked Gregory up should know in 
 - **Voice:** first person, plain, specific. Lead with the number, then the mechanism. Avoid "growth hacker", "ninja", emoji and exclamation marks in new copy.
 
 ## Recipes
-- **New case study:** add `src/content/work/<slug>.mdx` (see the schema in `src/content.config.ts`), using the sections Context → The problem → What I did → Results → What I'd do differently. OG image and sitemap entry are automatic.
-- **New project:** add `src/content/projects/<slug>.mdx`. The homepage bento shows the first three by `order`.
+- **New case study:** add `src/content/work/<slug>.mdx` (see the schema in `src/content.config.ts`), using the sections Context → The problem → What I did → Results. OG image and sitemap entry are automatic.
+- **New project:** add `src/content/projects/<slug>.mdx`. The homepage section shows them in `order`.
 - **New essay:** add `src/content/writing/<slug>.mdx`. Put images in `src/assets/writing/<slug>/` and use `<Image>` from `astro:assets`.
 - **Now update:** add `src/content/now/YYYY-MM.mdx`. The newest `updated` date wins.
 

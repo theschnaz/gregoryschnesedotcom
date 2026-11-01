@@ -10,7 +10,7 @@ export const site = {
   title: 'Gregory Schnese — Demand Generation & Growth Leader',
   descriptor: 'Technical demand-gen leader who builds',
   description:
-    'Gregory Schnese is a B2B SaaS demand generation leader with 15+ years in growth. Director of Demand Generation at FMX; previously scaled inbound ARR 10x at Fleetio. He also builds software: Day, Bitcoin Borrow Die and margin-watch.',
+    'Gregory Schnese is a B2B SaaS demand generation leader with 15+ years in growth. Director of Demand Generation at FMX; previously scaled inbound ARR 10x at Fleetio. He also builds software: Day and BitStack.',
   jobTitle: 'Director of Demand Generation',
   employer: { name: 'FMX', url: 'https://www.gofmx.com' },
   location: 'Northern Virginia',

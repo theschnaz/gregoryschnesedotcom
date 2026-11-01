@@ -50,7 +50,7 @@ const logos = ['FMX', 'Fleetio', 'CoPromote', 'kikin'];
         alt="Portrait of Gregory Schnese"
         widths={[240, 360, 480, 600]}
         sizes="(min-width: 1024px) 288px, (min-width: 640px) 240px, 192px"
-        class="aspect-square w-full rounded-[1.75rem] object-cover grayscale-[15%]"
+        class="aspect-square w-full rounded-[1.75rem] object-cover"
         loading="eager"
         fetchpriority="high"
       />
@@ -70,15 +70,13 @@ const logos = ['FMX', 'Fleetio', 'CoPromote', 'kikin'];
   <!-- Things I build -->
   <section class="container-page mt-24 sm:mt-32">
     <SectionHeading eyebrow="Things I build" title="I don’t just brief engineers. I ship." href="/projects" linkLabel="All projects" />
-    <div class="grid gap-5 md:grid-cols-6 md:grid-rows-[auto_auto]">
-      {projects[0] && <ProjectTile entry={projects[0]} large class="md:col-span-4 md:row-span-2 md:min-h-[26rem]" />}
-      {projects[1] && <ProjectTile entry={projects[1]} class="md:col-span-2" />}
-      {projects[2] && <ProjectTile entry={projects[2]} class="md:col-span-2" />}
+    <div class="grid gap-5 md:grid-cols-2">
+      {projects.map((p) => <ProjectTile entry={p} large class="md:min-h-[24rem]" />)}
       <a
         href={site.repoUrl}
         target="_blank"
         rel="noopener"
-        class="group flex flex-col justify-between gap-6 rounded-2xl border border-dashed border-line p-7 transition-colors hover:border-ink md:col-span-6 md:flex-row md:items-center dark:border-night-line dark:hover:border-night-ink"
+        class="group flex flex-col justify-between gap-6 rounded-2xl border border-dashed border-line p-7 transition-colors hover:border-ink md:col-span-2 md:flex-row md:items-center dark:border-night-line dark:hover:border-night-ink"
         data-reveal
       >
         <p class="font-mono text-sm text-muted dark:text-night-muted">

@@ -63,13 +63,15 @@ const loadAssets = () =>
   }))());
 
 // ---------- tokens ----------
+// Light theme, matching the site's default tokens in src/styles/global.css.
 const C = {
-  bg: '#121210',
-  ink: '#f4f2ec',
-  muted: '#a3a19b',
-  line: 'rgba(244,242,236,0.12)',
-  accent: '#fb923c',
-  accentDeep: '#c2410c',
+  bg: '#fbfaf7',
+  ink: '#141412',
+  muted: '#5c5a55',
+  line: 'rgba(20,20,18,0.10)',
+  accent: '#c2410c', // text-safe accent on light
+  accentBright: '#fb923c', // decorative
+  accentSoft: '#fde7d6',
 };
 
 // Minimal hyperscript helper so Satori doesn't need React/JSX.
@@ -94,14 +96,14 @@ const frame = (children: Node[]) =>
     },
     [
       // accent glow
-      div({ position: 'absolute', top: -260, right: -200, width: 760, height: 760, borderRadius: 760, backgroundImage: `radial-gradient(circle, rgba(251,146,60,0.30), rgba(251,146,60,0) 65%)` }),
+      div({ position: 'absolute', top: -260, right: -200, width: 760, height: 760, borderRadius: 760, backgroundImage: `radial-gradient(circle, rgba(251,146,60,0.22), rgba(251,146,60,0) 65%)` }),
       // graph-paper texture
       div({
         position: 'absolute',
         inset: 0,
         backgroundImage: `linear-gradient(to right, ${C.line} 1px, transparent 1px), linear-gradient(to bottom, ${C.line} 1px, transparent 1px)`,
         backgroundSize: '48px 48px',
-        opacity: 0.35,
+        opacity: 0.6,
       }),
       // left accent rule
       div({ position: 'absolute', left: 0, top: 0, bottom: 0, width: 10, background: C.accent }),
@@ -136,7 +138,7 @@ function heroCard(c: Card, photo: string) {
         div({ marginTop: 22, fontSize: 26, color: C.muted, lineHeight: 1.35 }, `${site.name} — 15+ years of B2B SaaS growth. Scaled Fleetio’s inbound ARR 10x.`),
       ]),
       div({ position: 'relative', width: 270, height: 270 }, [
-        div({ position: 'absolute', top: 16, left: 16, width: 270, height: 270, borderRadius: 40, background: C.accentDeep }),
+        div({ position: 'absolute', top: 16, left: 16, width: 270, height: 270, borderRadius: 40, background: C.accentBright }),
         h('img', { position: 'absolute', top: 0, left: 0, width: 270, height: 270, borderRadius: 40, objectFit: 'cover' }, undefined, { src: photo, width: 270, height: 270 }),
       ]),
     ]),

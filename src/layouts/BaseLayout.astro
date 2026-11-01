@@ -66,8 +66,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0e0e0c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbfaf7" />
     {site.social.map((s) => <link rel="me" href={s.url} />)}
 
     <meta property="og:type" content={ogType} />
@@ -117,10 +116,13 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
     <script is:inline>
       document.documentElement.classList.add('js');
-      const t = localStorage.getItem('theme');
-      if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      }
+      // Light by default; dark only if the visitor chose it (remembered in localStorage).
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0e0e0c');
+        }
+      } catch {}
     </script>
     {site.gaMeasurementId && (
       <>

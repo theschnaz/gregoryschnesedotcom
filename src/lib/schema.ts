@@ -60,3 +60,21 @@ export function article(opts: {
     author: { '@id': personId, '@type': 'Person', name: site.name, url: site.url },
   };
 }
+
+/** VideoObject for the intro video (og:video on home and about). */
+export function introVideo() {
+  const v = site.introVideo;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: `${site.name} — intro`,
+    description: site.description,
+    thumbnailUrl: new URL(v.poster, site.url).href,
+    contentUrl: new URL(v.mp4, site.url).href,
+    uploadDate: '2026-11-01',
+    duration: 'PT8S',
+    width: v.width,
+    height: v.height,
+    author: { '@id': personId },
+  };
+}

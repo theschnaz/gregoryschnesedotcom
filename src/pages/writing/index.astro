@@ -1,26 +1,54 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import PageHeader from '@/components/PageHeader.astro';
+import EssayCard from '@/components/EssayCard.astro';
+import CtaBand from '@/components/CtaBand.astro';
 
+// Oldest first: the essays build on each other.
 const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
 );
+const [featured, ...rest] = posts;
+const topics = [...new Set(posts.map((p) => p.data.topic))];
 ---
-<BaseLayout title="Writing" description="Essays and lessons on B2B SaaS growth from Gregory Schnese: yield-based bidding, segment analysis and A/B testing.">
-  <PageHeader eyebrow="Writing" title="Notes on growth, measurement and building." lede="Practical lessons from running paid acquisition and growth teams." />
-  <section class="container-page">
-    <ol class="divide-y divide-line border-y border-line dark:divide-night-line dark:border-night-line">
-      {posts.map((p) => (
-        <li data-reveal>
-          <a href={`/writing/${p.id}`} class="group block py-8">
-            <div>
-              <h2 class="text-2xl font-semibold tracking-tight text-balance group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4">{p.data.title}</h2>
-              <p class="mt-2 max-w-2xl text-pretty text-muted dark:text-night-muted">{p.data.description}</p>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ol>
+<BaseLayout title="Writing" description="Essays on B2B SaaS growth from Gregory Schnese: yield-based bidding, segment analysis and A/B testing.">
+  <header class="container-page pt-16 pb-12 sm:pt-24 sm:pb-16">
+    <div class="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div>
+        <p class="eyebrow mb-4">Writing</p>
+        <h1 class="max-w-3xl text-5xl font-semibold tracking-tight text-balance sm:text-7xl">
+          Field notes on growth<span class="text-accent dark:text-night-accent">.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl font-serif text-xl text-pretty text-muted sm:text-2xl dark:text-night-muted">
+          The frameworks I use to spend paid budgets well, find the segments that convert, and run tests that actually reach significance.
+        </p>
+      </div>
+      <dl class="flex gap-10 border-t border-line pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10 dark:border-night-line">
+        <div>
+          <dt class="eyebrow">Essays</dt>
+          <dd class="tabular mt-2 text-4xl font-semibold tracking-tight">{posts.length}</dd>
+        </div>
+        <div>
+          <dt class="eyebrow">Topics</dt>
+          <dd class="mt-2 flex flex-col gap-1 text-sm">
+            {topics.map((t) => <span>{t}</span>)}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="container-page" aria-label="Essays">
+    {featured && <EssayCard entry={featured} index={0} featured />}
+    {rest.length > 0 && (
+      <div class="mt-5 grid gap-5 md:grid-cols-2">
+        {rest.map((p, i) => <EssayCard entry={p} index={i + 1} />)}
+      </div>
+    )}
   </section>
+
+  <CtaBand
+    title="Want these frameworks applied to your funnel?"
+    body="I take on a small number of advisory conversations each quarter: paid-acquisition audits, measurement and attribution, trial-to-paid conversion."
+  />
 </BaseLayout>

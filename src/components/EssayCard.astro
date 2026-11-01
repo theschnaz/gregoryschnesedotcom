@@ -1,0 +1,74 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { readingMinutes } from '@/lib/reading';
+
+interface Props {
+  entry: CollectionEntry<'writing'>;
+  index: number;
+  featured?: boolean;
+}
+const { entry, index, featured = false } = Astro.props;
+const d = entry.data;
+const minutes = readingMinutes(entry.body);
+const num = String(index + 1).padStart(2, '0');
+---
+<article
+  class:list={[
+    'card group relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-ink/5 dark:hover:shadow-black/40',
+    featured ? 'grid lg:grid-cols-[1.15fr_1fr]' : 'flex flex-col',
+  ]}
+  data-reveal
+>
+  <!-- Stat panel -->
+  <div
+    class:list={[
+      'essay-grid relative flex flex-col justify-between gap-10 overflow-hidden',
+      featured
+        ? 'order-first bg-ink p-8 text-paper sm:p-10 lg:order-last lg:min-h-[26rem] dark:bg-night dark:ring-1 dark:ring-night-line dark:ring-inset'
+        : 'bg-accent-soft p-7 dark:bg-night-accent-soft',
+    ]}
+    aria-hidden="true"
+  >
+    <div class="flex items-center justify-between font-mono text-xs tracking-[0.14em] uppercase">
+      <span class:list={[featured ? 'text-paper/60 dark:text-night-muted' : 'text-muted dark:text-night-muted']}>№ {num}</span>
+      <span class:list={[featured ? 'text-night-accent' : 'text-accent dark:text-night-accent']}>{d.topic}</span>
+    </div>
+    <div>
+      <p
+        class:list={[
+          'tabular font-semibold tracking-tighter',
+          featured ? 'text-7xl text-night-accent sm:text-8xl' : 'text-5xl text-accent sm:text-6xl dark:text-night-accent',
+        ]}
+      >{d.stat}</p>
+      <p
+        class:list={[
+          'mt-3 max-w-xs font-mono text-xs leading-relaxed',
+          featured ? 'text-paper/70 dark:text-night-muted' : 'text-muted dark:text-night-muted',
+        ]}
+      >{d.statLabel}</p>
+    </div>
+  </div>
+
+  <!-- Text -->
+  <div class:list={['flex flex-1 flex-col', featured ? 'p-8 sm:p-10 lg:p-12' : 'p-7']}>
+    <p class="flex items-center gap-2 text-sm text-muted dark:text-night-muted">
+      <span class="font-medium text-ink dark:text-night-ink">{d.topic}</span>
+      <span aria-hidden="true">·</span>
+      <span>{minutes} min read</span>
+    </p>
+    <h2
+      class:list={[
+        'mt-4 font-semibold tracking-tight text-balance',
+        featured ? 'text-3xl sm:text-4xl' : 'text-2xl',
+      ]}
+    >
+      <a href={`/writing/${entry.id}`} class="after:absolute after:inset-0 focus-visible:outline-none">{d.title}</a>
+    </h2>
+    <p class:list={['mt-4 flex-1 font-serif text-pretty text-muted dark:text-night-muted', featured ? 'text-xl leading-relaxed' : 'text-lg leading-relaxed']}>
+      {d.takeaway}
+    </p>
+    <p class="mt-8 text-sm font-medium">
+      Read the essay <span aria-hidden="true" class="inline-block transition-transform group-hover:translate-x-1">→</span>
+    </p>
+  </div>
+</article>

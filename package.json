@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "og:video": "node scripts/og-video.cjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.2",

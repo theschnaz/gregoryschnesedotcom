@@ -29,6 +29,7 @@ Node 22.12+ is required.
 | Design tokens | `src/styles/global.css` (`@theme`) |
 | JSON-LD (ProfilePage / Person / BlogPosting) | `src/lib/schema.ts` |
 | OG images (generated at build) | `src/pages/og/[...slug].png.ts` |
+| Intro video (og:video), poster | `public/media/`, regenerate with `npm run og:video` (needs Playwright + ffmpeg) |
 | Legacy URL redirects, cache headers | `vercel.json` |
 | Google Analytics | `src/layouts/BaseLayout.astro`, ID via `PUBLIC_GA_MEASUREMENT_ID` |
 

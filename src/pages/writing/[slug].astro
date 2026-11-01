@@ -3,15 +3,23 @@ import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { article } from '@/lib/schema';
+import { readingMinutes } from '@/lib/reading';
+import EssayCard from '@/components/EssayCard.astro';
 import { site } from '@/site';
 import profile from '@/assets/profile.jpg';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('writing', ({ data }) => !data.draft);
-  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
+    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+  );
+  return posts.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, others: posts.map((p, j) => ({ p, j })).filter(({ j }) => j !== i) },
+  }));
 }
 
-const { entry } = Astro.props;
+const { entry, others } = Astro.props;
+const minutes = readingMinutes(entry.body);
 const { Content } = await render(entry);
 const d = entry.data;
 const url = new URL(`/writing/${entry.id}`, site.url).href;
@@ -22,16 +30,19 @@ const jsonLd = article({
   image: new URL(`/og/writing/${entry.id}.png`, site.url).href,
 });
 ---
-<BaseLayout title={d.title} description={d.description} ogType="article" jsonLd={jsonLd}>
+<BaseLayout title={d.title} description={d.description} ogType="article" jsonLd={jsonLd} articleTag={d.topic}>
   <article>
-    <header class="container-page pt-16 pb-10 sm:pt-24">
+    <header class="container-page pt-16 pb-12 sm:pt-24">
       <div class="mx-auto max-w-2xl">
         <a href="/writing" class="eyebrow hover:text-ink dark:hover:text-night-ink">← Writing</a>
-        {d.series && <p class="mt-8 text-sm text-accent dark:text-night-accent">{d.series}{d.seriesPart && ` · Lesson ${d.seriesPart}`}</p>}
-        <h1 class="mt-3 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">{d.title}</h1>
-        <p class="mt-5 text-lg text-pretty text-muted dark:text-night-muted">{d.description}</p>
-        <div class="mt-8 flex items-center gap-3 text-sm">
-          <Image src={profile} alt="" width={40} height={40} class="size-10 rounded-full" />
+        <p class="mt-10 flex items-center gap-2 text-sm">
+          <span class="rounded-full bg-accent-soft px-3 py-1 font-medium text-accent dark:bg-night-accent-soft dark:text-night-accent">{d.topic}</span>
+          <span class="text-muted dark:text-night-muted">{minutes} min read</span>
+        </p>
+        <h1 class="mt-5 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">{d.title}</h1>
+        <p class="mt-6 font-serif text-xl text-pretty text-muted sm:text-2xl dark:text-night-muted">{d.description}</p>
+        <div class="mt-8 flex items-center gap-3 border-t border-line pt-6 text-sm dark:border-night-line">
+          <Image src={profile} alt="" width={44} height={44} class="size-11 rounded-full object-cover" />
           <div>
             <p class="font-medium">{site.name}</p>
             <p class="text-muted dark:text-night-muted">{site.jobTitle}, {site.employer.name}</p>
@@ -40,13 +51,38 @@ const jsonLd = article({
       </div>
     </header>
     <div class="container-page">
-      <div class="prose-gs mx-auto max-w-2xl">
-        <Content />
+      <div class="mx-auto max-w-2xl">
+        <aside class="essay-grid relative mb-12 overflow-hidden rounded-2xl bg-ink p-7 text-paper sm:p-8 dark:bg-night-card dark:ring-1 dark:ring-night-line" aria-label="Key takeaway">
+          <div class="grid gap-6 sm:grid-cols-[auto_1fr] sm:items-center sm:gap-8">
+            <div>
+              <p class="tabular text-5xl font-semibold tracking-tighter text-night-accent">{d.stat}</p>
+              <p class="mt-2 max-w-48 font-mono text-[11px] leading-relaxed text-paper/60 dark:text-night-muted">{d.statLabel}</p>
+            </div>
+            <div class="sm:border-l sm:border-paper/15 sm:pl-8 dark:sm:border-night-line">
+              <p class="font-mono text-xs tracking-[0.14em] text-paper/60 uppercase dark:text-night-muted">TL;DR</p>
+              <p class="mt-2 font-serif text-lg leading-relaxed text-pretty">{d.takeaway}</p>
+            </div>
+          </div>
+        </aside>
+        <div class="prose-gs">
+          <Content />
+        </div>
+        <aside class="mt-14 flex flex-col gap-4 rounded-2xl border border-line p-7 sm:flex-row sm:items-center sm:justify-between dark:border-night-line">
+          <div>
+            <p class="font-semibold">Questions, or a result to share?</p>
+            <p class="mt-1 text-muted dark:text-night-muted">I read every email.</p>
+          </div>
+          <a href={`mailto:${site.email}`} class="self-start rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-transform hover:-translate-y-px sm:self-auto dark:bg-night-ink dark:text-night" data-event="email_click">Email me</a>
+        </aside>
       </div>
-      <aside class="mx-auto mt-14 max-w-2xl rounded-2xl bg-accent-soft p-7 dark:bg-night-accent-soft">
-        <p class="font-semibold">Questions, or a result to share?</p>
-        <p class="mt-1 text-muted dark:text-night-muted">I read every email: <a href={`mailto:${site.email}`} class="link-accent">{site.email}</a>. For weekly writing, subscribe to <a href={site.newsletter.url} class="link-accent" target="_blank" rel="noopener">{site.newsletter.name}</a>.</p>
-      </aside>
     </div>
   </article>
+  {others.length > 0 && (
+    <section class="container-page mt-24" aria-labelledby="more-essays">
+      <h2 id="more-essays" class="eyebrow mb-6">More essays</h2>
+      <div class="grid gap-5 md:grid-cols-2">
+        {others.map(({ p, j }) => <EssayCard entry={p} index={j} />)}
+      </div>
+    </section>
+  )}
 </BaseLayout>

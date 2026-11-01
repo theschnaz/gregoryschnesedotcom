@@ -17,7 +17,8 @@ This site is a verification layer: someone who looked Gregory up should know in 
 ## Recipes
 - **New case study:** add `src/content/work/<slug>.mdx` (see the schema in `src/content.config.ts`), using the sections Context → The problem → What I did → Results. OG image and sitemap entry are automatic.
 - **New project:** add `src/content/projects/<slug>.mdx`. The homepage section shows them in `order`.
-- **New essay:** add `src/content/writing/<slug>.mdx`. Put images in `src/assets/writing/<slug>/` and use `<Image>` from `astro:assets`.
+- **New essay:** add `src/content/writing/<slug>.mdx` with `topic`, `stat`, `statLabel` and `takeaway` in frontmatter (the stat must appear in the essay). Put images in `src/assets/writing/<slug>/` and use `<Image>` from `astro:assets`. Essays list oldest first.
+- **Share assets:** OG images are generated at build time by `src/pages/og/[...slug].png.ts`. The intro video (`public/media/`) is rendered by `npm run og:video` (needs Playwright + ffmpeg); re-run it when the title, employer or proof numbers change.
 - **Now update:** add `src/content/now/YYYY-MM.mdx`. The newest `updated` date wins.
 
 ## Before you open a PR

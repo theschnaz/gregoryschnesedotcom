@@ -116,3 +116,20 @@
     animation-duration: 0.01ms !important;
   }
 }
+
+/* Faint graph-paper texture for essay stat panels */
+.essay-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.06;
+  mask-image: linear-gradient(to bottom left, black, transparent 75%);
+}
+.essay-grid > * {
+  position: relative;
+}

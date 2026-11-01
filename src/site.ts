@@ -25,6 +25,15 @@ export const site = {
 
   resumePdf: '/gregory-schnese-resume.pdf',
 
+  /** Short intro video used as og:video and on /about. Regenerate with `npm run og:video`. */
+  introVideo: {
+    mp4: '/media/gregory-schnese-intro.mp4',
+    webm: '/media/gregory-schnese-intro.webm',
+    poster: '/media/gregory-schnese-intro.jpg',
+    width: 1200,
+    height: 630,
+  },
+
   newsletter: {
     name: 'Bitcoin, Borrow, Die',
     url: 'https://bitcoinborrowdie.com',

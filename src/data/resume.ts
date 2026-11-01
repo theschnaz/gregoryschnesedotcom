@@ -1,16 +1,18 @@
 /** Structured resume. Rendered at /resume (indexable HTML) and summarized on /about. */
 export const profileSummary =
-  'Technical growth leader with 15+ years of experience building and guiding teams to significant results, highlighted by a 10x inbound ARR increase at Fleetio. Skilled in data-driven strategy and in executing the technical work myself.';
+  'Technical growth leader with 15+ years of experience building and guiding teams to significant results, highlighted by a 10x inbound ARR increase at Fleetio. Skilled in data-driven strategy and in executing the technical work myself. Currently Director of Demand Generation at FMX.';
 
 export const experience = [
   {
     company: 'FMX',
-    title: 'Director of Demand Generation',
-    period: '2025 – present',
-    location: 'Remote',
+    title: 'Demand Generation, Director',
+    period: 'Mar 2026 – present',
+    location: 'Columbus, OH (Remote)',
     bullets: [
-      // TODO(greg): add FMX outcomes once they're shareable.
-      'Lead demand generation for a B2B SaaS facilities and maintenance management platform.',
+      "Own FMX's cross-channel demand generation strategy, accountable for marketing-qualified leads and pipeline.",
+      'Run paid digital, campaign and event marketing, and test new channels based on lead quality and conversion.',
+      'Own the reporting framework used to track campaign performance and funnel conversion by channel.',
+      'Lead and develop the demand generation team and align campaigns with Sales, Product and executive leadership.',
     ],
   },
   {
@@ -85,7 +87,6 @@ export const education = [
   {
     school: 'University of Wisconsin–Milwaukee',
     degree: 'Bachelor of Science in Information Resources',
-    period: '2004',
   },
 ];
 

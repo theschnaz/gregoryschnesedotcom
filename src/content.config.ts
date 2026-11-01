@@ -49,6 +49,13 @@ const writing = defineCollection({
       updatedDate: z.coerce.date().optional(),
       series: z.string().optional(),
       seriesPart: z.number().optional(),
+      /** Short topic label, e.g. "Paid acquisition" */
+      topic: z.string(),
+      /** The essay's signature number, shown big on cards */
+      stat: z.string(),
+      statLabel: z.string(),
+      /** One-sentence takeaway shown on cards and as the article TL;DR */
+      takeaway: z.string(),
       cover: image().optional(),
       draft: z.boolean().default(false),
     }),

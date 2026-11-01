@@ -8,7 +8,7 @@ import CaseStudyCard from '@/components/CaseStudyCard.astro';
 import ProjectTile from '@/components/ProjectTile.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import { primaryCta, principles, site, testimonials } from '@/site';
-import { profilePage } from '@/lib/schema';
+import { introVideo, profilePage } from "@/lib/schema";
 import { formatDate } from '@/lib/format';
 import profile from '@/assets/profile.jpg';
 
@@ -20,7 +20,7 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft))
 const [now] = (await getCollection('now')).sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
 const logos = ['FMX', 'Fleetio', 'CoPromote', 'kikin'];
 ---
-<BaseLayout jsonLd={profilePage('/')} ogType="profile">
+<BaseLayout jsonLd={[profilePage("/"), introVideo()]} ogType="profile" ogVideo>
   <!-- Hero -->
   <section class="container-page grid items-center gap-12 pt-16 pb-16 sm:pt-24 lg:grid-cols-[1fr_auto] lg:pb-24">
     <div>

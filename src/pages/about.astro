@@ -7,7 +7,7 @@ import { profilePage } from '@/lib/schema';
 import { site } from '@/site';
 import profile from '@/assets/profile.jpg';
 ---
-<BaseLayout title="About" description={site.description} jsonLd={profilePage('/about')} ogType="profile">
+<BaseLayout title="About" description={site.description} jsonLd={profilePage("/about")} ogType="profile" ogVideo>
   <section class="container-page grid gap-12 pt-16 sm:pt-24 lg:grid-cols-[1fr_20rem] lg:gap-20">
     <div>
       <p class="eyebrow">About</p>

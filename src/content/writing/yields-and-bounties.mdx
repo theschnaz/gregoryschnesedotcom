@@ -1,0 +1,70 @@
+---
+title: 'Yield and Bounty: The Framework for Paid SaaS Growth'
+description: "Focus on events higher in your funnel when you don't generate enough of the events you want to directly influence."
+pubDate: 2019-07-09
+series: 'Market like Schnese'
+seriesPart: 1
+---
+
+import roas from '@/assets/writing/chapterone/roas.png';
+import spreadsheet from '@/assets/writing/chapterone/spreadsheet.png';
+import mql from '@/assets/writing/chapterone/mql.jpg';
+import yieldImg from '@/assets/writing/chapterone/yield.jpg';
+import { Image } from 'astro:assets';
+
+What is yield based marketing and how can bounties help you achieve your marketing goals? I'm glad you asked. Get ready, we're going to dive in and answer those questions!
+
+In SaaS marketing, the goal is to generate a high return on marketing effort and spend. Many ad platforms support this through return on ad spend (ROAS) bidding. Google calculates ROAS by summing your sales, dividing by spend, then multiplying by 100%:
+
+<figure>
+  <Image src={roas} alt="Google's ROAS formula: conversion value divided by ad spend, times 100%" />
+  <figcaption>Source: <a href="https://support.google.com/google-ads/answer/6268637?hl=en">Google Ads Help</a></figcaption>
+</figure>
+
+While this is easy to understand, it’s much harder to implement and actually generate marketing value. In this chapter, we’ll look at which steps we can take to build our marketing machine so we can generate a high return on ad spend (aka yield).
+
+At the beginning, the problem is volume or frequency of events. We need data to do fancy bidding like ROAS but when we're starting out, we don't have a large dataset and we can't generate it quickly enough. What's a SaaS marketer to do?
+
+Let’s say we have the following marketing funnel:
+
+1. Suspect (landing page visitors, etc.)
+2. MQL (marketing qualified lead)
+3. SAL (sales accepted lead)
+4. Customer (someone who can generate recurring revenue)
+
+We’ll have many more suspects than customers, sometimes as much as 100x. ROAS bidding assumes we have enough sales or customer data to pass back to an ad partner which will use this data to optimize our campaign.
+
+When we aren’t generating enough sales or customer events, we'll need to look higher up the funnel to a place where we generate enough volume of events. At minimum, we want at least 30 events per week. We can continue to move up our funnel until we find an event that generates enough volume.
+
+Now that we have selected the event (we’ll use the MQL event for this example), how do we calculate a return on MQL events? This will be used as an approximation of events further down the funnel.
+
+To do this, we’ll need to write out the funnel and the conversion rates from one step to the next. For our example, we can assume:
+
+<figure>
+  <Image src={spreadsheet} alt="Spreadsheet: suspect to MQL 20%, MQL to SAL 30%, SAL to customer 50%, with bounty values per stage" />
+  <figcaption><a href="https://docs.google.com/spreadsheets/d/1WYv0ySyocdrn8W8Dbz0Kv4zzJb4UrZ4Coiul8sgY0nI/edit?usp=sharing">View the model in Google Sheets</a></figcaption>
+</figure>
+
+For every suspect we generate, 20% of them become MQLs, 30% of MQLs become SALs, and 50% of SALs become paying customers. If our goal was to generate a new paying customer for every $500 in spend, we could set a bounty of $75 for our MQL event.
+
+In other words, for every $75 we spend, we want to generate 1 MQL. For every $500 we spend, we want to generate a new customer.
+
+<Image src={mql} alt="Illustration of a $75 bounty per MQL" />
+
+Now that we have a bounty value, what are we going to do with it? We’re going to create our yield (or return) metric!
+
+Yield is calculated like ROAS, but we are using our bounty values instead of customer ARR or sales:
+
+> **Yield** = ((# of conversions × bounty per conversion) ÷ spend) × 100%
+
+<Image src={yieldImg} alt="The yield formula illustrated" />
+
+Let’s say we spent $1,300 and generated 15 MQLs. How much yield did we generate?
+
+> ((15 × $75) ÷ $1,300) × 100% = **87%**
+
+I typically aim for yields that are 70% or higher, but yield targets are highly dependent on your industry and product.
+
+As we build volume and spend more, we’ll generate more data. Once we hit 30 SAL conversions per week, we can repeat this entire process again and find our SAL yield. We can grow our data, spend, and repeat this process until we generate enough customers or purchases. At that point, yield and ROAS become the same metric.
+
+Feel free to reach out with any questions. I’d love to hear about your success with yield based marketing!

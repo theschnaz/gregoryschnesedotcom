@@ -1,0 +1,50 @@
+---
+import { primaryCta, site } from '@/site';
+const year = new Date().getFullYear();
+const links = [
+  { href: '/work', label: 'Work' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/writing', label: 'Writing' },
+  { href: '/about', label: 'About' },
+  { href: '/now', label: 'Now' },
+  { href: '/advisory', label: 'Advisory' },
+  { href: '/resume', label: 'Resume' },
+  { href: '/newsletter', label: 'Newsletter' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+<footer class="mt-24 border-t border-line dark:border-night-line">
+  <div class="container-page py-16">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr]">
+      <div>
+        <p class="max-w-md text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+          Working on demand gen for a B2B SaaS company? Let’s talk.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a
+            href={primaryCta.href}
+            {...(primaryCta.external ? { target: '_blank', rel: 'noopener' } : {})}
+            class="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-transform hover:-translate-y-px dark:bg-night-accent dark:text-night"
+            data-event="CTA click"
+          >{primaryCta.label}</a>
+          <a href={`mailto:${site.email}`} class="link-accent text-sm">{site.email}</a>
+        </div>
+      </div>
+      <nav aria-label="Footer" class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm sm:grid-cols-3">
+        {links.map((l) => (
+          <a href={l.href} class="text-muted hover:text-ink dark:text-night-muted dark:hover:text-night-ink">{l.label}</a>
+        ))}
+      </nav>
+    </div>
+    <div class="mt-14 flex flex-col gap-4 border-t border-line pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between dark:border-night-line dark:text-night-muted">
+      <p>© {year} {site.name} · {site.location}</p>
+      <ul class="flex flex-wrap gap-x-5 gap-y-2">
+        {site.social.map((s) => (
+          <li><a href={s.url} rel="me noopener" target="_blank" class="hover:text-ink dark:hover:text-night-ink">{s.name}</a></li>
+        ))}
+        <li><a href="/rss.xml" class="hover:text-ink dark:hover:text-night-ink">RSS</a></li>
+        <li><a href={site.repoUrl} rel="noopener" target="_blank" class="hover:text-ink dark:hover:text-night-ink">Source</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

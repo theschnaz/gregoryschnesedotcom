@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import { education, experience } from '@/data/resume';
+import { profilePage } from '@/lib/schema';
+import { site } from '@/site';
+import profile from '@/assets/profile.jpg';
+---
+<BaseLayout title="About" description={site.description} jsonLd={profilePage('/about')} ogType="profile">
+  <section class="container-page grid gap-12 pt-16 sm:pt-24 lg:grid-cols-[1fr_20rem] lg:gap-20">
+    <div>
+      <p class="eyebrow">About</p>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-6xl">A growth marketer who writes the code.</h1>
+      <div class="prose-gs mt-10 max-w-2xl">
+        <p>
+          I’m Gregory Schnese. I’ve spent more than fifteen years making software companies grow, and most of that time I’ve been the person on the growth team who could also write the query, the tracking code or the feature.
+        </p>
+        <p>
+          I started as a product manager at <a href="/work/kikin">kikin</a>, a New York contextual-search startup, where I owned user acquisition and helped take a browser plugin from roughly 300,000 to more than 2 million monthly active users. At <a href="/work/copromote">CoPromote</a>, a cross-promotion network for creators, I built the marketing and growth team from scratch and grew the member base and SaaS revenue 4x, past 700,000 members.
+        </p>
+        <p>
+          From 2018 to 2025 I led demand generation at <a href="/work/fleetio">Fleetio</a>, where a $4M+ a year paid program and a cross-functional growth team delivered 10x growth in inbound ARR and doubled trial-to-paid conversion. Today I’m {site.jobTitle} at <a href={site.employer.url}>{site.employer.name}</a>.
+        </p>
+        <p>
+          Outside of work I build things: <a href="/projects/day">Day</a>, a React Native habit app that pays out in Bitcoin; <a href="/projects/bitcoin-borrow-die">Bitcoin, Borrow, Die</a>, a modeling tool and weekly newsletter; and <a href="/projects/margin-watch">margin-watch</a>. These days I build mostly with AI coding agents, which has made the gap between “growth idea” and “shipped” smaller than it’s ever been.
+        </p>
+        <p>
+          I have an MS in Management and Systems from NYU, where I was a Dean’s Graduate Fellow, and a BS in Information Resources from the University of Wisconsin–Milwaukee. I live in {site.location}.
+        </p>
+      </div>
+    </div>
+    <aside class="lg:pt-10">
+      <Image src={profile} alt="Portrait of Gregory Schnese" widths={[320, 480, 600]} sizes="(min-width: 1024px) 320px, 100vw" class="aspect-square w-full max-w-80 rounded-3xl object-cover" />
+      <dl class="mt-8 space-y-5 text-sm">
+        <div>
+          <dt class="eyebrow">Now</dt>
+          <dd class="mt-1">{site.jobTitle}, {site.employer.name}</dd>
+        </div>
+        <div>
+          <dt class="eyebrow">Previously</dt>
+          <dd class="mt-1">{experience.slice(1).map((e) => e.company.replace(' Inc.', '')).join(' · ')}</dd>
+        </div>
+        <div>
+          <dt class="eyebrow">Education</dt>
+          <dd class="mt-1">{education.map((e) => e.school).join(' · ')}</dd>
+        </div>
+        <div>
+          <dt class="eyebrow">Elsewhere</dt>
+          <dd class="mt-1 flex flex-wrap gap-x-4 gap-y-1">
+            {site.social.map((s) => <a href={s.url} rel="me noopener" target="_blank" class="link-accent">{s.name}</a>)}
+          </dd>
+        </div>
+      </dl>
+      <a href="/resume" class="link-accent mt-5 inline-block text-sm">Full resume →</a>
+    </aside>
+  </section>
+  <CtaBand />
+</BaseLayout>

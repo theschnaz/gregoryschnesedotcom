@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# gregoryschnese.com
 
-## Available Scripts
+Personal site of Gregory Schnese: an "operator portfolio" with positioning, quantified case studies, projects, writing and one clear call to action.
 
-In the project directory, you can run:
+**Stack:** Astro 7 · Tailwind CSS v4 · MDX content collections · Satori OG images · Cloudflare Workers static assets. The site ships no framework JS; the only scripts are small inline ones for the theme toggle and scroll reveals.
 
-### `npm start`
+## Develop
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # static output in dist/
+npm run preview
+npm run check      # astro check (types + diagnostics)
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Node 22.12+ is required.
 
-### `npm test`
+## Where things live
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| What | Where |
+| --- | --- |
+| Identity facts, CTA, proof bar, principles, testimonials | `src/site.ts` |
+| Resume (HTML `/resume` + About sidebar) | `src/data/resume.ts`, PDF in `public/` |
+| Case studies `/work/*` | `src/content/work/*.mdx` |
+| Projects `/projects/*` | `src/content/projects/*.mdx` |
+| Writing `/writing/*` + RSS | `src/content/writing/*.mdx` |
+| `/now` (newest entry wins) | `src/content/now/YYYY-MM.mdx` |
+| Design tokens | `src/styles/global.css` (`@theme`) |
+| JSON-LD (ProfilePage / Person / BlogPosting) | `src/lib/schema.ts` |
+| OG images (generated at build) | `src/pages/og/[...slug].png.ts` |
+| Legacy URL redirects | `public/_redirects` |
 
-### `npm run build`
+Schemas for every collection are in `src/content.config.ts`; the build fails if frontmatter is wrong.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Deploy (Cloudflare)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+`wrangler.jsonc` serves `dist/` as static assets on Workers (free tier).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Git integration:** in the Cloudflare dashboard, create a Worker from this repo with build command `npm run build` and deploy command `npx wrangler deploy`.
+- **Manual:** `npm run deploy`.
 
-### `npm run eject`
+Then point the `gregoryschnese.com` DNS at the Worker (Custom Domains). In Cloudflare's **AI Crawl Control / bot settings**, make sure AI crawlers are *not* blocked if you want assistants to be able to cite the site.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Turn-on checklist
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [ ] `src/site.ts` → `bookingUrl`: create a Cal.com event (e.g. 20-min intro) and paste the link. CTAs switch from "Get in touch" to "Book a 20-min call".
+- [ ] `src/site.ts` → `plausibleDomain`: set after creating the Plausible site. Goals fire from `data-event` attributes: `CTA click`, `Newsletter click`, `Resume download`, `Project click`, `Contact submit`.
+- [ ] `src/site.ts` → `testimonials`: add 2–3 named quotes (with permission). The section stays hidden while empty.
+- [ ] Resolve every `TODO(greg)` in `src/content/**` and `src/data/resume.ts`.
+- [ ] Replace `public/gregory-schnese-resume.pdf` with a version that includes FMX.
+- [ ] Verify in Google Search Console + Bing Webmaster Tools; test share cards with LinkedIn Post Inspector.
+- [ ] Update `/now` monthly.

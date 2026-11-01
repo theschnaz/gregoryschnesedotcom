@@ -1,0 +1,52 @@
+---
+import { nav, primaryCta, site } from '@/site';
+import ThemeToggle from './ThemeToggle.astro';
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+<header class="sticky top-0 z-40 border-b border-line/70 bg-paper/85 backdrop-blur-md dark:border-night-line/70 dark:bg-night/85">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:rounded-md focus:bg-ink focus:px-3 focus:py-2 focus:text-paper">Skip to content</a>
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a href="/" class="text-[15px] font-semibold tracking-tight" aria-label={`${site.name}, home`}>
+      Gregory Schnese<span class="text-accent dark:text-night-accent">.</span>
+    </a>
+    <nav aria-label="Primary" class="flex items-center gap-1 sm:gap-2">
+      <ul class="hidden items-center gap-1 md:flex">
+        {nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={[
+                'rounded-full px-3 py-1.5 text-sm transition-colors',
+                isActive(item.href)
+                  ? 'text-ink dark:text-night-ink font-medium'
+                  : 'text-muted hover:text-ink dark:text-night-muted dark:hover:text-night-ink',
+              ]}
+            >{item.label}</a>
+          </li>
+        ))}
+      </ul>
+      <ThemeToggle />
+      <a
+        href={primaryCta.href}
+        {...(primaryCta.external ? { target: '_blank', rel: 'noopener' } : {})}
+        class="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-paper transition-transform hover:-translate-y-px sm:inline-block dark:bg-night-ink dark:text-night"
+        data-event="CTA click"
+      >{primaryCta.label}</a>
+      <details class="relative md:hidden">
+        <summary class="grid size-9 cursor-pointer list-none place-items-center rounded-full hover:bg-line/60 dark:hover:bg-night-line [&::-webkit-details-marker]:hidden" aria-label="Menu">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </summary>
+        <ul class="card absolute right-0 mt-2 w-52 p-2 shadow-lg">
+          {nav.map((item) => (
+            <li><a href={item.href} class="block rounded-lg px-3 py-2 text-sm hover:bg-paper dark:hover:bg-night">{item.label}</a></li>
+          ))}
+          <li><a href="/now" class="block rounded-lg px-3 py-2 text-sm hover:bg-paper dark:hover:bg-night">Now</a></li>
+          <li class="mt-1 border-t border-line pt-1 dark:border-night-line"><a href={primaryCta.href} class="block rounded-lg px-3 py-2 text-sm font-medium text-accent dark:text-night-accent">{primaryCta.label} →</a></li>
+        </ul>
+      </details>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { site } from '@/site';
+const field = 'mt-2 w-full rounded-xl border border-line bg-card px-4 py-3 text-base outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 dark:border-night-line dark:bg-night-card dark:focus:border-night-accent';
+---
+<BaseLayout title="Contact" description="Get in touch with Gregory Schnese about demand generation, advisory work or anything on this site.">
+  <PageHeader eyebrow="Contact" title="Get in touch." lede="Recruiter, founder, fellow growth person or newsletter reader: email is the best way to reach me. I usually reply within a few days." />
+  <section class="container-page grid gap-12 lg:grid-cols-[1fr_22rem]">
+    <form id="contact-form" action={`mailto:${site.email}`} method="post" enctype="text/plain" class="card max-w-2xl space-y-5 p-7 sm:p-9">
+      <div>
+        <label for="name" class="text-sm font-medium">Name</label>
+        <input id="name" name="name" required autocomplete="name" class={field} />
+      </div>
+      <div>
+        <label for="email" class="text-sm font-medium">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" class={field} />
+      </div>
+      <div>
+        <label for="message" class="text-sm font-medium">What are you working on?</label>
+        <textarea id="message" name="message" rows="5" required class={field}></textarea>
+      </div>
+      <button type="submit" class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-px dark:bg-night-accent dark:text-night" data-event="Contact submit">Send message</button>
+      <p class="text-sm text-muted dark:text-night-muted">This opens your email app with the message filled in.</p>
+    </form>
+    <aside class="space-y-8 text-sm">
+      <div>
+        <p class="eyebrow">Email</p>
+        <a href={`mailto:${site.email}`} class="link-accent mt-2 inline-block text-base">{site.email}</a>
+      </div>
+      {site.bookingUrl && (
+        <div>
+          <p class="eyebrow">Book a call</p>
+          <a href={site.bookingUrl} target="_blank" rel="noopener" class="link-accent mt-2 inline-block text-base" data-event="CTA click">Pick a time on my calendar ↗</a>
+        </div>
+      )}
+      <div>
+        <p class="eyebrow">Elsewhere</p>
+        <ul class="mt-2 space-y-1 text-base">
+          {site.social.map((s) => <li><a href={s.url} rel="me noopener" target="_blank" class="link-accent">{s.name}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Based in</p>
+        <p class="mt-2 text-base">{site.location}</p>
+      </div>
+    </aside>
+  </section>
+  <script define:vars={{ email: site.email }}>
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const f = new FormData(e.currentTarget);
+      const subject = `Hello from ${f.get('name')}`;
+      const body = `${f.get('message')}\n\n— ${f.get('name')} (${f.get('email')})`;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</BaseLayout>

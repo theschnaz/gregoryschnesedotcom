@@ -1,0 +1,57 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CtaBand from '@/components/CtaBand.astro';
+
+export async function getStaticPaths() {
+  const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return work.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: work[(i + 1) % work.length] },
+  }));
+}
+
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+<BaseLayout title={d.title} description={d.summary} ogType="article">
+  <article>
+    <header class="container-page pt-16 pb-12 sm:pt-24">
+      <a href="/work" class="eyebrow hover:text-ink dark:hover:text-night-ink">← Case studies</a>
+      <p class="eyebrow mt-8">{d.company} · {d.role} · {d.period}</p>
+      <h1 class="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl">{d.title}</h1>
+      <p class="mt-6 max-w-2xl text-lg text-pretty text-muted sm:text-xl dark:text-night-muted">{d.summary}</p>
+      {d.stats.length > 0 && (
+        <dl class="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4 dark:border-night-line dark:bg-night-line">
+          {d.stats.map((s) => (
+            <div class="bg-card p-6 dark:bg-night-card">
+              <dt class="sr-only">{s.label}</dt>
+              <dd>
+                <p class="tabular text-3xl font-semibold tracking-tight sm:text-4xl">{s.value}</p>
+                <p class="mt-1 text-sm text-muted dark:text-night-muted">{s.label}</p>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      )}
+    </header>
+    <div class="container-page">
+      <div class="prose-gs mx-auto max-w-2xl">
+        <Content />
+      </div>
+    </div>
+  </article>
+  {next && next.id !== entry.id && (
+    <nav class="container-page mt-20" aria-label="Next case study">
+      <a href={`/work/${next.id}`} class="card group mx-auto flex max-w-2xl items-center justify-between gap-6 p-7">
+        <span>
+          <span class="eyebrow block">Next case study</span>
+          <span class="mt-2 block text-xl font-semibold tracking-tight">{next.data.title}</span>
+        </span>
+        <span class="text-2xl transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+      </a>
+    </nav>
+  )}
+  <CtaBand />
+</BaseLayout>

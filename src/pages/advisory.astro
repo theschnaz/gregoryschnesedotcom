@@ -1,0 +1,63 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { primaryCta, site } from '@/site';
+
+const engagements = [
+  {
+    title: 'Paid acquisition audit',
+    body: 'A structured review of your paid program: conversion events, bidding strategy, budget allocation and reporting. You get a written teardown and a prioritized plan to move spend toward revenue.',
+    fit: 'B2B SaaS spending $50K+/month on paid',
+  },
+  {
+    title: 'Measurement & attribution build',
+    body: 'Design the funnel events, bounties and reporting your team needs to bid on value instead of volume, and the data plumbing to get them to the ad platforms.',
+    fit: 'Teams whose ad platforms optimize to leads, not pipeline',
+  },
+  {
+    title: 'Trial-to-paid sprint',
+    body: 'Find the segments and behaviors that predict conversion, then design the onboarding and lifecycle experiments, sized so they can actually reach significance.',
+    fit: 'Product-led or free-trial SaaS',
+  },
+];
+---
+<BaseLayout title="Advisory" description="Selective advisory from Gregory Schnese for B2B SaaS teams: paid-acquisition audits, measurement and attribution builds, and trial-to-paid conversion.">
+  <PageHeader eyebrow="Advisory" title="Selective help for B2B SaaS demand engines." lede="I take on a small number of advisory engagements each quarter, alongside my full-time role. They are scoped, time-boxed and built around the systems behind the case studies on this site." />
+  <section class="container-page grid gap-5 md:grid-cols-3">
+    {engagements.map((e) => (
+      <div class="card flex flex-col p-7" data-reveal>
+        <h2 class="text-xl font-semibold tracking-tight">{e.title}</h2>
+        <p class="mt-3 flex-1 text-pretty text-muted dark:text-night-muted">{e.body}</p>
+        <p class="mt-6 border-t border-line pt-4 text-sm dark:border-night-line"><span class="eyebrow block mb-1">Best for</span>{e.fit}</p>
+      </div>
+    ))}
+  </section>
+  <section class="container-page mt-16 grid gap-10 md:grid-cols-2">
+    <div>
+      <h2 class="text-2xl font-semibold tracking-tight">Why me</h2>
+      <ul class="mt-4 space-y-3 text-pretty">
+        <li><a href="/work/fleetio" class="link-accent">10x inbound ARR</a> and 2x trial-to-paid at Fleetio, on a $4M+/yr paid budget.</li>
+        <li><a href="/work/copromote" class="link-accent">4x members and SaaS revenue</a> at CoPromote, to 700K+ members.</li>
+        <li>I can do the technical work myself: SQL, tracking, and <a href="/projects" class="link-accent">shipping software</a>.</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-2xl font-semibold tracking-tight">What I don’t take on</h2>
+      <ul class="mt-4 space-y-3 text-pretty text-muted dark:text-night-muted">
+        <li>Ongoing campaign management or agency-style retainers.</li>
+        <li>Anything that competes with {site.employer.name}, my full-time employer.</li>
+        <li>Lead-gen for lead-gen’s sake. If it can’t be tied to pipeline, I’m not the right fit.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="container-page mt-16">
+    <div class="rounded-3xl bg-accent-soft p-8 sm:p-12 dark:bg-night-accent-soft">
+      <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Start with a 20-minute call.</h2>
+      <p class="mt-3 max-w-xl text-pretty text-muted dark:text-night-muted">Tell me what you’re working on. If I’m not the right fit, I’ll usually know someone who is.</p>
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <a href={primaryCta.href} {...(primaryCta.external ? { target: '_blank', rel: 'noopener' } : {})} class="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white dark:bg-night-accent dark:text-night" data-event="CTA click">{primaryCta.label}</a>
+        <a href={`mailto:${site.email}?subject=Advisory`} class="link-accent text-sm">or email me</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

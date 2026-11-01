@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import CtaBand from '@/components/CtaBand.astro';
+
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="Work" description="Case studies from 15+ years of B2B SaaS growth: Fleetio (10x inbound ARR), CoPromote (4x members to 700K+) and kikin (2M+ MAU).">
+  <PageHeader eyebrow="Case studies" title="Growth I’ve led, and how." lede="Every number here came from a system: instrumentation, bidding on value, segment-level focus and a team that could ship. Each case study covers the context, the problem, what I changed and the result." />
+  <section class="container-page">
+    <ol class="divide-y divide-line border-y border-line dark:divide-night-line dark:border-night-line">
+      {work.map((w) => (
+        <li data-reveal>
+          <a href={`/work/${w.id}`} class="group grid gap-4 py-10 md:grid-cols-[14rem_1fr_auto] md:items-center md:gap-10">
+            <p class="tabular text-6xl font-semibold tracking-tighter text-accent sm:text-7xl dark:text-night-accent">{w.data.metric}</p>
+            <div>
+              <p class="eyebrow">{w.data.company} · {w.data.role} · {w.data.period}</p>
+              <h2 class="mt-2 text-2xl font-semibold tracking-tight text-balance group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4">{w.data.title}</h2>
+              <p class="mt-2 max-w-2xl text-pretty text-muted dark:text-night-muted">{w.data.summary}</p>
+            </div>
+            <span class="text-2xl transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+  <CtaBand />
+</BaseLayout>

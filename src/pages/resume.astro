@@ -1,0 +1,94 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { certifications, education, experience, profileSummary, projects, skills } from '@/data/resume';
+import { site } from '@/site';
+---
+<BaseLayout title="Resume" description={`Resume of ${site.name}, ${site.jobTitle} at ${site.employer.name}. 15+ years of B2B SaaS growth at FMX, Fleetio, CoPromote and kikin.`}>
+  <div class="container-page pt-16 sm:pt-24">
+    <div class="mx-auto max-w-3xl">
+      <header class="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8 dark:border-night-line">
+        <div>
+          <p class="eyebrow">Resume</p>
+          <h1 class="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{site.name}</h1>
+          <p class="mt-2 text-muted dark:text-night-muted">{site.jobTitle} · {site.location} · <a href={`mailto:${site.email}`} class="link-accent">{site.email}</a></p>
+        </div>
+        <a href={site.resumePdf} download class="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-transform hover:-translate-y-px dark:bg-night-ink dark:text-night" data-event="Resume download">Download PDF</a>
+      </header>
+
+      <section class="mt-10">
+        <h2 class="eyebrow">Profile</h2>
+        <p class="mt-3 text-lg text-pretty">{profileSummary}</p>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="eyebrow">Experience</h2>
+        <ol class="mt-4 space-y-10">
+          {experience.map((job) => (
+            <li class="grid gap-2 sm:grid-cols-[10rem_1fr] sm:gap-8">
+              <div class="text-sm text-muted dark:text-night-muted">
+                <p class="tabular">{job.period}</p>
+                <p>{job.location}</p>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold tracking-tight">{job.title}</h3>
+                <p class="font-medium text-accent dark:text-night-accent">{job.company}</p>
+                <ul class="mt-3 list-disc space-y-2 pl-5 text-pretty marker:text-muted">
+                  {job.bullets.map((b) => <li>{b}</li>)}
+                </ul>
+                {job.caseStudy && <a href={job.caseStudy} class="link-accent mt-3 inline-block text-sm">Read the case study →</a>}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="eyebrow">Projects</h2>
+        <ul class="mt-4 space-y-6">
+          {projects.map((p) => (
+            <li class="grid gap-2 sm:grid-cols-[10rem_1fr] sm:gap-8">
+              <p class="tabular text-sm text-muted dark:text-night-muted">{p.period}</p>
+              <div>
+                <h3 class="font-semibold"><a href={p.href} class="hover:underline">{p.name}</a> <span class="font-normal text-muted dark:text-night-muted">· {p.role}</span></h3>
+                <p class="mt-1 text-pretty">{p.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="mt-12 grid gap-10 sm:grid-cols-2">
+        <div>
+          <h2 class="eyebrow">Education</h2>
+          <ul class="mt-4 space-y-5">
+            {education.map((e) => (
+              <li>
+                <p class="font-semibold">{e.school}</p>
+                <p>{e.degree}</p>
+                {e.detail && <p class="text-sm text-muted dark:text-night-muted">{e.detail}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="eyebrow">Certifications</h2>
+          <ul class="mt-4 space-y-5">
+            {certifications.map((c) => (
+              <li>
+                <p class="font-semibold">{c.name}</p>
+                <p class="text-sm text-muted dark:text-night-muted">{c.issuer} · {c.date}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="eyebrow">Skills</h2>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {skills.map((s) => <li class="rounded-full border border-line px-3 py-1 text-sm dark:border-night-line">{s}</li>)}
+        </ul>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

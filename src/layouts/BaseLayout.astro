@@ -1,0 +1,127 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/newsreader';
+import '@fontsource-variable/newsreader/wght-italic.css';
+import '@fontsource-variable/jetbrains-mono';
+import '@/styles/global.css';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { site } from '@/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path to an OG image, defaults to the generated one for this page */
+  ogImage?: string;
+  ogType?: 'website' | 'article' | 'profile';
+  jsonLd?: object | object[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  ogType = 'website',
+  jsonLd,
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} · ${site.name}` : site.title;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogPath =
+  Astro.props.ogImage ??
+  `/og/${Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index'}.png`;
+const ogImage = new URL(ogPath, site.url).href;
+const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="author" content={site.name} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} — Writing`} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e0e0c" media="(prefers-color-scheme: dark)" />
+    {site.social.map((s) => <link rel="me" href={s.url} />)}
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title ?? site.title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@theschnaz" />
+
+    {ld.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      const t = localStorage.getItem('theme');
+      if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    {site.plausibleDomain && (
+      <script is:inline defer data-domain={site.plausibleDomain} src="https://plausible.io/js/script.tagged-events.outbound-links.file-downloads.js"></script>
+    )}
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <Header />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Scroll-in reveal + proof-bar count-up. Skipped entirely under reduced motion.
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const els = document.querySelectorAll<HTMLElement>('[data-reveal]');
+      const countUp = (el: HTMLElement) => {
+        const target = Number(el.dataset.count);
+        if (reduce || !target) return;
+        const start = performance.now();
+        const dur = 900;
+        const tick = (now: number) => {
+          const p = Math.min((now - start) / dur, 1);
+          el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach((el) => el.classList.add('is-visible'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              const el = e.target as HTMLElement;
+              el.classList.add('is-visible');
+              el.querySelectorAll<HTMLElement>('[data-count]').forEach(countUp);
+              io.unobserve(el);
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px' },
+        );
+        els.forEach((el) => io.observe(el));
+      }
+
+      // Plausible custom events: <a data-event="Goal name">
+      document.addEventListener('click', (ev) => {
+        const a = (ev.target as Element).closest<HTMLElement>('[data-event]');
+        const w = window as unknown as { plausible?: (n: string, o?: object) => void };
+        if (a && w.plausible) w.plausible(a.dataset.event!, { props: { path: location.pathname } });
+      });
+    </script>
+  </body>
+</html>

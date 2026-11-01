@@ -24,7 +24,7 @@ const d = entry.data;
       <p class="mt-5 max-w-2xl text-lg text-pretty text-muted sm:text-xl dark:text-night-muted">{d.tagline}</p>
       <div class="mt-8 flex flex-wrap items-center gap-4">
         {d.url && (
-          <a href={d.url} target="_blank" rel="noopener" class="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-transform hover:-translate-y-px dark:bg-night-ink dark:text-night" data-event="Project click">
+          <a href={d.url} target="_blank" rel="noopener" class="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-transform hover:-translate-y-px dark:bg-night-ink dark:text-night" data-event="project_click">
             Visit {d.urlLabel ?? d.title} ↗
           </a>
         )}

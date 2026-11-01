@@ -16,9 +16,8 @@ const {
     <div class="mt-8 flex flex-wrap gap-3">
       <a
         href={primaryCta.href}
-        {...(primaryCta.external ? { target: '_blank', rel: 'noopener' } : {})}
         class="rounded-full bg-night-accent px-5 py-2.5 text-sm font-semibold text-night transition-transform hover:-translate-y-px"
-        data-event="CTA click"
+        data-event="cta_click"
       >{primaryCta.label}</a>
       <a href="/advisory" class="rounded-full px-5 py-2.5 text-sm font-medium text-paper ring-1 ring-paper/25 hover:ring-paper/60 dark:text-night-ink dark:ring-night-line">How I help</a>
     </div>

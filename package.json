@@ -10,8 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check",
-    "deploy": "astro build && wrangler deploy"
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.2",
@@ -30,7 +29,6 @@
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/typography": "^0.5.20",
     "satori": "^0.63.2",
-    "typescript": "^6.0.3",
-    "wrangler": "^4.156.0"
+    "typescript": "^6.0.3"
   }
 }

@@ -37,9 +37,8 @@ const logos = ['FMX', 'Fleetio', 'CoPromote', 'kikin'];
       <div class="mt-9 flex flex-wrap gap-3">
         <a
           href={primaryCta.href}
-          {...(primaryCta.external ? { target: '_blank', rel: 'noopener' } : {})}
           class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-px dark:bg-night-accent dark:text-night"
-          data-event="CTA click"
+          data-event="cta_click"
         >{primaryCta.label}</a>
         <a href="/work" class="rounded-full px-6 py-3 text-sm font-medium ring-1 ring-line transition-colors hover:ring-ink dark:ring-night-line dark:hover:ring-night-ink">Read the case studies</a>
       </div>
@@ -149,7 +148,7 @@ const logos = ['FMX', 'Fleetio', 'CoPromote', 'kikin'];
         target="_blank"
         rel="noopener"
         class="mt-6 self-start rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-transform hover:-translate-y-px dark:bg-night-ink dark:text-night"
-        data-event="Newsletter click"
+        data-event="newsletter_click"
       >Subscribe free ↗</a>
     </div>
   </section>

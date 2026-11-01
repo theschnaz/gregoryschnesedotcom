@@ -2,7 +2,7 @@
 
 Personal site of Gregory Schnese: an "operator portfolio" with positioning, quantified case studies, projects, writing and one clear call to action.
 
-**Stack:** Astro 7 · Tailwind CSS v4 · MDX content collections · Satori OG images · Cloudflare Workers static assets. The site ships no framework JS; the only scripts are small inline ones for the theme toggle and scroll reveals.
+**Stack:** Astro 7 · Tailwind CSS v4 · MDX content collections · Satori OG images · Vercel · Google Analytics 4. The site ships no framework JS; the only scripts are small inline ones for the theme toggle and scroll reveals.
 
 ## Develop
 
@@ -29,23 +29,26 @@ Node 22.12+ is required.
 | Design tokens | `src/styles/global.css` (`@theme`) |
 | JSON-LD (ProfilePage / Person / BlogPosting) | `src/lib/schema.ts` |
 | OG images (generated at build) | `src/pages/og/[...slug].png.ts` |
-| Legacy URL redirects | `public/_redirects` |
+| Legacy URL redirects, cache headers | `vercel.json` |
+| Google Analytics | `src/layouts/BaseLayout.astro`, ID via `PUBLIC_GA_MEASUREMENT_ID` |
 
 Schemas for every collection are in `src/content.config.ts`; the build fails if frontmatter is wrong.
 
-## Deploy (Cloudflare)
+## Deploy (Vercel)
 
-`wrangler.jsonc` serves `dist/` as static assets on Workers (free tier).
+The site is fully static, so no adapter is needed. `vercel.json` sets the build and holds the legacy-URL redirects.
 
-- **Git integration:** in the Cloudflare dashboard, create a Worker from this repo with build command `npm run build` and deploy command `npx wrangler deploy`.
-- **Manual:** `npm run deploy`.
+1. In Vercel, **Add New → Project** and import this repo. It detects Astro; the build command is `npm run build` and the output is `dist`.
+2. Under **Settings → Environment Variables**, add `PUBLIC_GA_MEASUREMENT_ID` (your GA4 `G-…` ID) for Production, then redeploy.
+3. Under **Settings → Domains**, add `gregoryschnese.com` and `www.gregoryschnese.com` and follow the DNS instructions.
 
-Then point the `gregoryschnese.com` DNS at the Worker (Custom Domains). In Cloudflare's **AI Crawl Control / bot settings**, make sure AI crawlers are *not* blocked if you want assistants to be able to cite the site.
+Every pull request gets a preview deployment automatically.
+
+> Vercel's Hobby (free) plan is for non-commercial personal use. If the site starts promoting paid advisory work, Vercel expects the Pro plan.
 
 ## Turn-on checklist
 
-- [ ] `src/site.ts` → `bookingUrl`: create a Cal.com event (e.g. 20-min intro) and paste the link. CTAs switch from "Get in touch" to "Book a 20-min call".
-- [ ] `src/site.ts` → `plausibleDomain`: set after creating the Plausible site. Goals fire from `data-event` attributes: `CTA click`, `Newsletter click`, `Resume download`, `Project click`, `Contact submit`.
+- [ ] Create a GA4 property and set `PUBLIC_GA_MEASUREMENT_ID` in Vercel (and in `.env` locally, see `.env.example`). Custom events fire from `data-event` attributes: `cta_click`, `newsletter_click`, `resume_download`, `project_click`, `contact_submit`. Mark the ones you care about as key events in GA.
 - [ ] `src/site.ts` → `testimonials`: add 2–3 named quotes (with permission). The section stays hidden while empty.
 - [ ] Resolve every `TODO(greg)` in `src/content/**` and `src/data/resume.ts`.
 - [ ] Replace `public/gregory-schnese-resume.pdf` with a version that includes FMX.

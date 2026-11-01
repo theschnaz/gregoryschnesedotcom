@@ -23,9 +23,8 @@ const links = [
         <div class="mt-6 flex flex-wrap items-center gap-3">
           <a
             href={primaryCta.href}
-            {...(primaryCta.external ? { target: '_blank', rel: 'noopener' } : {})}
             class="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-transform hover:-translate-y-px dark:bg-night-accent dark:text-night"
-            data-event="CTA click"
+            data-event="cta_click"
           >{primaryCta.label}</a>
           <a href={`mailto:${site.email}`} class="link-accent text-sm">{site.email}</a>
         </div>

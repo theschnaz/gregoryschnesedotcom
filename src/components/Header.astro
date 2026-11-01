@@ -31,9 +31,8 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
       <ThemeToggle />
       <a
         href={primaryCta.href}
-        {...(primaryCta.external ? { target: '_blank', rel: 'noopener' } : {})}
         class="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-paper transition-transform hover:-translate-y-px sm:inline-block dark:bg-night-ink dark:text-night"
-        data-event="CTA click"
+        data-event="cta_click"
       >{primaryCta.label}</a>
       <details class="relative md:hidden">
         <summary class="grid size-9 cursor-pointer list-none place-items-center rounded-full hover:bg-line/60 dark:hover:bg-night-line [&::-webkit-details-marker]:hidden" aria-label="Menu">

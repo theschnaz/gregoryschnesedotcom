@@ -17,18 +17,12 @@ export const site = {
   email: 'theschnaz@gmail.com',
 
   /**
-   * Cal.com (or other) booking link. Leave empty until the event type exists;
-   * CTAs fall back to /contact + email.
-   * e.g. 'https://cal.com/gregoryschnese/20min'
+   * Google Analytics 4 measurement ID (G-XXXXXXXXXX). Set PUBLIC_GA_MEASUREMENT_ID
+   * in Vercel's environment variables (or .env locally). Empty = no GA script.
+   * Custom events fire from `data-event` attributes: cta_click, newsletter_click,
+   * resume_download, project_click, contact_submit.
    */
-  bookingUrl: '',
-
-  /**
-   * Plausible analytics. Set to the site domain once the Plausible site is
-   * created (e.g. 'gregoryschnese.com'). Empty = no analytics script.
-   * Suggested goals: "Book call", "Newsletter click", "Resume download".
-   */
-  plausibleDomain: '',
+  gaMeasurementId: (import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '') as string,
 
   resumePdf: '/gregory-schnese-resume.pdf',
 
@@ -57,9 +51,7 @@ export const nav = [
 ] as const;
 
 /** Primary CTA used sitewide. */
-export const primaryCta = site.bookingUrl
-  ? { href: site.bookingUrl, label: 'Book a 20-min call', external: true }
-  : { href: '/contact', label: 'Get in touch', external: false };
+export const primaryCta = { href: '/contact', label: 'Get in touch' } as const;
 
 /** Big numbers for the proof bar. */
 export const proof = [

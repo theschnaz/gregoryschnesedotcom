@@ -72,8 +72,16 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
         document.documentElement.classList.add('dark');
       }
     </script>
-    {site.plausibleDomain && (
-      <script is:inline defer data-domain={site.plausibleDomain} src="https://plausible.io/js/script.tagged-events.outbound-links.file-downloads.js"></script>
+    {site.gaMeasurementId && (
+      <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${site.gaMeasurementId}`}></script>
+        <script is:inline define:vars={{ gaId: site.gaMeasurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { dataLayer.push(arguments); };
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
     )}
   </head>
   <body class="flex min-h-dvh flex-col">
@@ -116,11 +124,16 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
         els.forEach((el) => io.observe(el));
       }
 
-      // Plausible custom events: <a data-event="Goal name">
+      // Google Analytics custom events: <a data-event="event_name">
       document.addEventListener('click', (ev) => {
         const a = (ev.target as Element).closest<HTMLElement>('[data-event]');
-        const w = window as unknown as { plausible?: (n: string, o?: object) => void };
-        if (a && w.plausible) w.plausible(a.dataset.event!, { props: { path: location.pathname } });
+        const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+        if (a && w.gtag) {
+          w.gtag('event', a.dataset.event!, {
+            page_path: location.pathname,
+            link_url: a.getAttribute('href') ?? undefined,
+          });
+        }
       });
     </script>
   </body>

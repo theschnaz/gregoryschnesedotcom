@@ -20,7 +20,7 @@ const field = 'mt-2 w-full rounded-xl border border-line bg-card px-4 py-3 text-
         <label for="message" class="text-sm font-medium">What are you working on?</label>
         <textarea id="message" name="message" rows="5" required class={field}></textarea>
       </div>
-      <button type="submit" class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-px dark:bg-night-accent dark:text-night" data-event="Contact submit">Send message</button>
+      <button type="submit" class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-px dark:bg-night-accent dark:text-night" data-event="contact_submit">Send message</button>
       <p class="text-sm text-muted dark:text-night-muted">This opens your email app with the message filled in.</p>
     </form>
     <aside class="space-y-8 text-sm">
@@ -28,12 +28,6 @@ const field = 'mt-2 w-full rounded-xl border border-line bg-card px-4 py-3 text-
         <p class="eyebrow">Email</p>
         <a href={`mailto:${site.email}`} class="link-accent mt-2 inline-block text-base">{site.email}</a>
       </div>
-      {site.bookingUrl && (
-        <div>
-          <p class="eyebrow">Book a call</p>
-          <a href={site.bookingUrl} target="_blank" rel="noopener" class="link-accent mt-2 inline-block text-base" data-event="CTA click">Pick a time on my calendar ↗</a>
-        </div>
-      )}
       <div>
         <p class="eyebrow">Elsewhere</p>
         <ul class="mt-2 space-y-1 text-base">

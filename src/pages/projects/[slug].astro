@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+<BaseLayout title={`${d.title}: ${d.tagline}`} description={d.description} ogType="article">
+  <article>
+    <header class="container-page pt-16 pb-12 sm:pt-24">
+      <a href="/projects" class="eyebrow hover:text-ink dark:hover:text-night-ink">← Projects</a>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <StatusBadge status={d.status} />
+        <span class="font-mono text-xs text-muted dark:text-night-muted">since {d.since}</span>
+      </div>
+      <h1 class="mt-5 text-5xl font-semibold tracking-tight sm:text-7xl">{d.title}</h1>
+      <p class="mt-5 max-w-2xl text-lg text-pretty text-muted sm:text-xl dark:text-night-muted">{d.tagline}</p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        {d.url && (
+          <a href={d.url} target="_blank" rel="noopener" class="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-transform hover:-translate-y-px dark:bg-night-ink dark:text-night" data-event="project_click">
+            Visit {d.urlLabel ?? d.title} ↗
+          </a>
+        )}
+        <ul class="flex flex-wrap gap-1.5" aria-label="Stack">
+          {d.stack.map((s) => <li class="rounded-md bg-line/60 px-2 py-1 font-mono text-xs dark:bg-night-line">{s}</li>)}
+        </ul>
+      </div>
+    </header>
+    <div class="container-page">
+      <div class="prose-gs mx-auto max-w-2xl">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

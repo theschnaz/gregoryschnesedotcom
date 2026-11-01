@@ -1,0 +1,49 @@
+---
+title: 'Metrics in Metrics: Find the Winning Segments Within'
+description: 'Your metrics are the sum of their parts. Find the best parts and focus on them.'
+pubDate: 2019-08-19
+series: 'Market like Schnese'
+seriesPart: 2
+---
+
+import rate from '@/assets/writing/chaptertwo/rate.png';
+import segment from '@/assets/writing/chaptertwo/segment.png';
+import { Image } from 'astro:assets';
+
+Growth marketing is all about leveraging our winners and minimizing our losers. In chapter one, we discussed [yields, bounties, and how to calculate them](/writing/yields-and-bounties). In this chapter, we will explore how our conversion rate metrics are really just averages, the segments that make up our metrics, and how to improve marketing by applying our yield and bounties framework to our winning segments.
+
+Many companies track Very Important Key Performance Indicators (KPIs) or metrics. A user sign up, an app download, a trialing customer upgrading to a paid plan are all good examples.
+
+For this chapter, let's pretend we are Netflix and we want to improve our trial to paying customer rate which is currently 13.3%. When we look at this metric, what we're really saying is **on average** our trialing accounts convert to paying customers 13.3% of the time.
+
+While this may be true, when we take data and average it, we throw away a lot of the nuance in order to generate a clean and crisp datapoint.
+
+## How can we improve our trial to paying customer rate?
+
+To start, let's assume our trial to paying customer rate is currently 13.3%. Since we know this metric is an average of all of our users, we can start to break it down into meaningful segments. What could be a meaningful segment for us? Maybe it's location, age, or customer interest category. For this post, let's go with customer interest category:
+
+<Image src={rate} alt="Trial-to-paid conversion rate broken down by customer interest category" />
+
+When we slice our data by customer interest category, we find:
+
+- Horror fans convert from trial to paid at 12%
+- Comedy fans convert from trial to paid at 25%
+- Reality TV fans convert from trial to paid at 3%
+
+We clearly want to direct our marketing efforts at comedy fans and avoid reality TV fans.
+
+## How can we target comedy fans?
+
+We can use a tool, like [Segment](https://segment.com/docs/spec/track/), and pass a trialing customer's most watched category as a datapoint when they upgrade to a paying customer:
+
+<Image src={segment} alt="Segment track call passing mostWatchedCategory on the upgrade event" />
+
+Now that we are passing the type of customer (`mostWatchedCategory`) when they upgrade to a paying customer, we can send that data to an ad partner such as Google or Facebook. With these services, we can create an audience that looks like our best converting segment (comedy), a [lookalike audience](https://www.facebook.com/business/help/164749007013531).
+
+With our new comedy lookalike audience, we can target people who are similar to our best converting customers. We can even match the creative of our campaign to the type of incoming traffic. When people hit our landing page, we can show them funny shows and movies.
+
+If we want to get advanced, we can make audiences for our lower performing segments and exclude them (do not spend money advertising to these people).
+
+By breaking our important metrics into meaningful segments, we can spend more money on high winners, less money on low performers, and we can match the creative to the type of people we target!
+
+Feel free to reach out with any questions. I’d love to hear about your success with segment based marketing!

@@ -1,0 +1,5 @@
+# AI crawlers are welcome: being citable by assistants is the point.
+User-agent: *
+Allow: /
+
+Sitemap: https://gregoryschnese.com/sitemap-index.xml

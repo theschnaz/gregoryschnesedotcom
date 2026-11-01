@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import ProjectTile from '@/components/ProjectTile.astro';
+import { site } from '@/site';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="Projects" description="Software Gregory Schnese designs, builds and grows himself: Day (React Native habit app with Bitcoin rewards), Bitcoin Borrow Die and margin-watch.">
+  <PageHeader eyebrow="Things I build" title="Proof that I can ship, not just strategize." lede="Few demand-gen leaders write production code. I build and grow my own products, now mostly with AI coding agents, so I understand the systems I’m asking engineering teams to build." />
+  <section class="container-page grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    {projects.map((p) => <ProjectTile entry={p} class="min-h-72" />)}
+  </section>
+  <section class="container-page mt-16">
+    <div class="rounded-2xl border border-dashed border-line p-7 font-mono text-sm text-muted dark:border-night-line dark:text-night-muted">
+      Earlier: CreatorsPromote, Democracy Follows, Coovents, Watchlr, Likely and Drinkspottings.
+      See <a href="https://github.com/theschnaz" class="link-accent" rel="noopener">GitHub</a> for the archive, or <a href={site.repoUrl} class="link-accent" rel="noopener">the source for this site</a>.
+    </div>
+  </section>
+</BaseLayout>

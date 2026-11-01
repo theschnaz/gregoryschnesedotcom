@@ -1,68 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# gregoryschnese.com
 
-## Available Scripts
+Personal site of Gregory Schnese: an "operator portfolio" with positioning, quantified case studies, projects, writing and one clear call to action.
 
-In the project directory, you can run:
+**Stack:** Astro 7 · Tailwind CSS v4 · MDX content collections · Satori OG images · Vercel · Google Analytics 4. The site ships no framework JS; the only scripts are small inline ones for the theme toggle and scroll reveals.
 
-### `npm start`
+## Develop
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # static output in dist/
+npm run preview
+npm run check      # astro check (types + diagnostics)
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Node 22.12+ is required.
 
-### `npm test`
+## Where things live
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| What | Where |
+| --- | --- |
+| Identity facts, CTA, proof bar, principles, testimonials | `src/site.ts` |
+| Resume (HTML `/resume` + About sidebar) | `src/data/resume.ts`, PDF in `public/` |
+| Case studies `/work/*` | `src/content/work/*.mdx` |
+| Projects `/projects/*` | `src/content/projects/*.mdx` |
+| Writing `/writing/*` + RSS | `src/content/writing/*.mdx` |
+| `/now` (newest entry wins) | `src/content/now/YYYY-MM.mdx` |
+| Design tokens | `src/styles/global.css` (`@theme`) |
+| JSON-LD (ProfilePage / Person / BlogPosting) | `src/lib/schema.ts` |
+| OG images (generated at build) | `src/pages/og/[...slug].png.ts` |
+| Legacy URL redirects, cache headers | `vercel.json` |
+| Google Analytics | `src/layouts/BaseLayout.astro`, ID via `PUBLIC_GA_MEASUREMENT_ID` |
 
-### `npm run build`
+Schemas for every collection are in `src/content.config.ts`; the build fails if frontmatter is wrong.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Deploy (Vercel)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The site is fully static, so no adapter is needed. `vercel.json` sets the build and holds the legacy-URL redirects.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. In Vercel, **Add New → Project** and import this repo. It detects Astro; the build command is `npm run build` and the output is `dist`.
+2. Under **Settings → Environment Variables**, add `PUBLIC_GA_MEASUREMENT_ID` (your GA4 `G-…` ID) for Production, then redeploy.
+3. Under **Settings → Domains**, add `gregoryschnese.com` and `www.gregoryschnese.com` and follow the DNS instructions.
 
-### `npm run eject`
+Every pull request gets a preview deployment automatically.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> Vercel's Hobby (free) plan is for non-commercial personal use. If the site starts promoting paid advisory work, Vercel expects the Pro plan.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Turn-on checklist
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [ ] Create a GA4 property and set `PUBLIC_GA_MEASUREMENT_ID` in Vercel (and in `.env` locally, see `.env.example`). Custom events fire from `data-event` attributes: `cta_click`, `newsletter_click`, `resume_download`, `project_click`, `contact_submit`. Mark the ones you care about as key events in GA.
+- [ ] `src/site.ts` → `testimonials`: add 2–3 named quotes (with permission). The section stays hidden while empty.
+- [ ] Resolve every `TODO(greg)` in `src/content/**` and `src/data/resume.ts`.
+- [ ] Replace `public/gregory-schnese-resume.pdf` with a version that includes FMX.
+- [ ] Verify in Google Search Console + Bing Webmaster Tools; test share cards with LinkedIn Post Inspector.
+- [ ] Update `/now` monthly.

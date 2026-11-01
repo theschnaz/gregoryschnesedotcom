@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { formatDate } from '@/lib/format';
+
+const [latest] = (await getCollection('now')).sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
+const { Content } = await render(latest);
+---
+<BaseLayout title="Now" description={`What Gregory Schnese is focused on now: ${latest.data.summary}`}>
+  <div class="container-page pt-16 sm:pt-24">
+    <div class="mx-auto max-w-2xl">
+      <p class="eyebrow">Now · Updated <time datetime={latest.data.updated.toISOString()}>{formatDate(latest.data.updated)}</time></p>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">What I’m doing now</h1>
+      <div class="prose-gs mt-10">
+        <Content />
+      </div>
+      <p class="mt-12 text-sm text-muted dark:text-night-muted">
+        This is a <a href="https://nownownow.com/about" class="link-accent" rel="noopener">now page</a>, an idea from Derek Sivers.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

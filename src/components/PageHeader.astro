@@ -1,0 +1,14 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lede?: string;
+}
+const { eyebrow, title, lede } = Astro.props;
+---
+<header class="container-page pt-16 pb-10 sm:pt-24 sm:pb-14">
+  {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
+  <h1 class="max-w-4xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl">{title}</h1>
+  {lede && <p class="mt-6 max-w-2xl text-lg text-pretty text-muted sm:text-xl dark:text-night-muted">{lede}</p>}
+  <slot />
+</header>

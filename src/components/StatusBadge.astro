@@ -1,0 +1,16 @@
+---
+interface Props {
+  status: string;
+}
+const { status } = Astro.props;
+const live = status === 'Live';
+---
+<span class:list={[
+  'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 font-mono text-[11px] font-medium tracking-wide uppercase',
+  live
+    ? 'border-emerald-600/30 text-emerald-700 dark:border-emerald-400/30 dark:text-emerald-400'
+    : 'border-line text-muted dark:border-night-line dark:text-night-muted',
+]}>
+  <span class:list={['size-1.5 rounded-full', live ? 'bg-emerald-600 dark:bg-emerald-400' : 'bg-current']} aria-hidden="true"></span>
+  {status}
+</span>

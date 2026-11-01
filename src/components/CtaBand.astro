@@ -1,0 +1,25 @@
+---
+import { primaryCta } from '@/site';
+interface Props {
+  title?: string;
+  body?: string;
+}
+const {
+  title = 'Building a demand engine for a B2B SaaS product?',
+  body = 'I take on a small number of advisory conversations each quarter: paid-acquisition audits, attribution and measurement, trial-to-paid conversion.',
+} = Astro.props;
+---
+<section class="container-page mt-24" data-reveal>
+  <div class="rounded-3xl bg-ink px-7 py-12 text-paper sm:px-12 sm:py-16 dark:bg-night-card dark:text-night-ink dark:ring-1 dark:ring-night-line">
+    <h2 class="max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{title}</h2>
+    <p class="mt-4 max-w-xl text-pretty text-paper/70 dark:text-night-muted">{body}</p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href={primaryCta.href}
+        class="rounded-full bg-night-accent px-5 py-2.5 text-sm font-semibold text-night transition-transform hover:-translate-y-px"
+        data-event="cta_click"
+      >{primaryCta.label}</a>
+      <a href="/advisory" class="rounded-full px-5 py-2.5 text-sm font-medium text-paper ring-1 ring-paper/25 hover:ring-paper/60 dark:text-night-ink dark:ring-night-line">How I help</a>
+    </div>
+  </div>
+</section>

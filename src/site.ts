@@ -34,7 +34,7 @@ export const site = {
   },
 
   social: [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/gregory-schnese-608a952' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/gregory-schnese-199325329/' },
     { name: 'X', url: 'https://x.com/theschnaz' },
     { name: 'GitHub', url: 'https://github.com/theschnaz' },
   ],

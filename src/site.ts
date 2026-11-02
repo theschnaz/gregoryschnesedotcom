@@ -80,9 +80,44 @@ export const principles = [
   },
   {
     title: 'Ship the tool yourself',
-    body: 'The fastest growth teams don’t wait on a ticket queue. I build in React and React Native myself: the landing pages, the tracking and, increasingly, the product, with AI agents as the team.',
+    body: 'I build in React and React Native myself: the landing pages, the tracking and, increasingly, the product, with AI agents as the team. Ideas reach customers in days.',
   },
 ] as const;
+
+/**
+ * Roles Gregory has managed and developed, grouped by the part of the
+ * funnel they own. Rendered in the homepage Leadership section.
+ */
+export const leadership = {
+  stages: [
+    {
+      stage: 'Acquire',
+      roles: [
+        { title: 'Paid Digital Specialist', body: 'Runs paid search, social and review-site programs day to day, with bidding tied to pipeline value.' },
+        { title: 'ABM Campaign Manager', body: 'Orchestrates multi-channel campaigns into named target accounts, in lockstep with Sales.' },
+        { title: 'Field Events Manager', body: 'Plans trade shows, conferences and field events, and turns conversations into pipeline.' },
+      ],
+    },
+    {
+      stage: 'Convert',
+      roles: [
+        { title: 'CRO Specialist', body: 'Owns landing pages, signup and trial flows, and the experiment roadmap that lifts conversion.' },
+      ],
+    },
+    {
+      stage: 'Retain & expand',
+      roles: [
+        { title: 'Lifecycle Marketing Manager', body: 'Owns onboarding, nurture and expansion programs that keep leads and customers moving.' },
+      ],
+    },
+  ],
+  /** Facts from the resume (src/data/resume.ts) */
+  highlights: [
+    { company: 'FMX', text: 'Lead and develop the demand generation team, aligning campaigns with Sales, Product and executive leadership.' },
+    { company: 'Fleetio', text: 'Hired and led a cross-functional growth team of product managers, developers, designers and engineers.' },
+    { company: 'CoPromote', text: 'Built the marketing and growth team from the ground up.' },
+  ],
+} as const;
 
 /**
  * Named testimonials. Add real quotes (with permission) from former CEOs,

@@ -1,0 +1,56 @@
+---
+import { leadership } from '@/site';
+
+const roles = leadership.stages.flatMap((s, i) => s.roles.map((r) => ({ ...r, stage: s.stage, stageIndex: i })));
+---
+<section class="container-page mt-24 sm:mt-32" aria-labelledby="leadership-heading">
+  <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="eyebrow mb-3">Leadership</p>
+      <h2 id="leadership-heading" class="max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+        I build and lead full-funnel demand teams.
+      </h2>
+    </div>
+    <p class="max-w-sm text-pretty text-muted dark:text-night-muted">
+      Specialists who each own a stage of the funnel, working from one plan and one set of pipeline numbers.
+    </p>
+  </div>
+
+  <!-- Funnel stages (desktop) -->
+  <ol class="mb-3 hidden grid-cols-5 gap-5 lg:grid" aria-hidden="true">
+    {leadership.stages.map((s, i) => (
+      <li class="flex items-center gap-3" style={`grid-column: span ${s.roles.length}`}>
+        <span class="tabular font-mono text-xs text-accent dark:text-night-accent">0{i + 1}</span>
+        <span class="eyebrow whitespace-nowrap">{s.stage}</span>
+        <span class="h-px flex-1 bg-line dark:bg-night-line"></span>
+        {i < leadership.stages.length - 1 && <span class="text-muted dark:text-night-muted">→</span>}
+      </li>
+    ))}
+  </ol>
+
+  <!-- Roles -->
+  <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+    {roles.map((r) => (
+      <li class="card flex flex-col p-6" data-reveal>
+        <p class="eyebrow lg:hidden">0{r.stageIndex + 1} · {r.stage}</p>
+        <span class="mt-3 block h-1 w-8 rounded-full bg-accent lg:mt-0 dark:bg-night-accent" aria-hidden="true"></span>
+        <h3 class="mt-5 text-lg leading-snug font-semibold tracking-tight">{r.title}</h3>
+        <p class="mt-2 text-sm text-pretty text-muted dark:text-night-muted">{r.body}</p>
+      </li>
+    ))}
+  </ul>
+
+  <!-- Track record -->
+  <div class="mt-5 grid gap-8 rounded-2xl bg-ink p-7 text-paper sm:p-9 lg:grid-cols-[12rem_1fr_1fr_1fr] lg:gap-10 dark:bg-night-card dark:text-night-ink dark:ring-1 dark:ring-night-line" data-reveal>
+    <div>
+      <p class="tabular text-6xl font-semibold tracking-tighter text-night-accent">{roles.length}</p>
+      <p class="mt-1 text-sm text-paper/70 dark:text-night-muted">specialist roles managed and developed</p>
+    </div>
+    {leadership.highlights.map((h) => (
+      <div class="border-t border-paper/15 pt-5 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8 dark:border-night-line">
+        <p class="font-mono text-xs tracking-[0.14em] text-night-accent uppercase">{h.company}</p>
+        <p class="mt-2 text-sm text-pretty text-paper/85 dark:text-night-ink">{h.text}</p>
+      </div>
+    ))}
+  </div>
+</section>

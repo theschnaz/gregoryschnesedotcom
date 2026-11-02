@@ -8,7 +8,7 @@ import { site } from '@/site';
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout title="Projects" description="Software Gregory Schnese designs, builds and grows himself: Day (React Native habit app with Bitcoin rewards) and BitStack (Bitcoin portfolio and loan tracking).">
-  <PageHeader eyebrow="Things I build" title="Proof that I can ship, not just strategize." lede="Few demand-gen leaders write production code. I build and grow my own products, now mostly with AI coding agents, so I understand the systems I’m asking engineering teams to build." />
+  <PageHeader eyebrow="Things I build" title="I design, build and grow my own products." lede="Shipping my own software keeps my growth work grounded in how products are really built. I take each one from idea to launch to growth, now mostly with AI coding agents." />
   <section class="container-page grid gap-5 md:grid-cols-2 lg:grid-cols-3">
     {projects.map((p) => <ProjectTile entry={p} class="min-h-72" />)}
   </section>

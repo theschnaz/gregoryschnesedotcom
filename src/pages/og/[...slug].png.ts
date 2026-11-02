@@ -34,7 +34,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     index: { layout: 'hero', eyebrow: `${site.jobTitle} · ${site.employer.name}`, title: 'I build B2B SaaS demand engines and the software behind them.' },
     about: { layout: 'hero', eyebrow: 'About', title: 'A growth marketer who writes the code.' },
     work: t('Case studies', 'Growth I’ve led, and how.'),
-    projects: t('Things I build', 'Proof that I can ship, not just strategize.'),
+    projects: t('Things I build', 'I design, build and grow my own products.'),
     writing: t('Writing', 'Field notes on growth.'),
     now: t('Now', 'What I’m doing now.'),
     advisory: t('Advisory', 'Selective help for B2B SaaS demand engines.'),

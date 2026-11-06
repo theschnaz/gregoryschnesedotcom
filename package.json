@@ -12,7 +12,8 @@
     "preview": "npx serve .vercel/output/static",
     "check": "astro check",
     "og:video": "node scripts/og-video.cjs",
-    "indexnow:dry-run": "node scripts/indexnow.mjs --dry-run"
+    "indexnow:dry-run": "node scripts/indexnow.mjs --dry-run",
+    "mcp:publish": "bash scripts/mcp-publish.sh"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.2",

@@ -1,11 +1,11 @@
 /** MCP discovery manifest (server.json-style), generated from the live tool list. */
-import { SERVER_INFO, tools } from '@/lib/mcp';
+import { REGISTRY_NAME, SERVER_INFO, tools } from '@/lib/mcp';
 import { site } from '@/site';
 
 export async function GET() {
   const manifest = {
     $schema: 'https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json',
-    name: 'com.gregoryschnese/profile',
+    name: REGISTRY_NAME,
     title: SERVER_INFO.title,
     description: `Read-only, public facts about ${site.name}: profile, results, case studies, projects, essays, resume and contact.`,
     version: SERVER_INFO.version,

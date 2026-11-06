@@ -11,8 +11,11 @@ import { jsonResume } from './json-resume';
 import { facts, factsUpdated } from '@/data/facts';
 import { stripInlineMd } from './inline-md';
 import { leadership, proof, site } from '@/site';
+// Registry metadata (name, version) lives in server.json, which `npm run mcp:publish` submits.
+import registry from '../../server.json';
 
-export const SERVER_INFO = { name: 'gregoryschnese-com', title: `${site.name} — profile`, version: '1.0.0' };
+export const SERVER_INFO = { name: 'gregoryschnese-com', title: registry.title, version: registry.version };
+export const REGISTRY_NAME = registry.name;
 const PROTOCOL_VERSIONS = ['2025-06-18', '2025-03-26', '2024-11-05'];
 const abs = (p: string) => new URL(p, site.url).href;
 

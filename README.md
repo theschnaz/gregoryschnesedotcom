@@ -75,3 +75,26 @@ Everything agent-facing is generated from the same content as the HTML pages, so
 - **Person JSON-LD:** credentials, occupation and skills, employer and school links.
 - **IndexNow:** `npm run build` pings IndexNow with every sitemap URL on Vercel production builds (`VERCEL_ENV=production`). Preview builds skip it; a failure never fails the build. `npm run indexnow:dry-run` prints the payload.
 - **Ask AI links:** case studies, essays, projects, About and Facts link to ChatGPT, Claude and Perplexity with the page's Markdown URL in the prompt, plus "Copy as Markdown".
+
+## MCP Registry
+
+The MCP server is listed in the official registry as `com.gregoryschnese/profile` from `server.json`. That file is also the source of the version the live server reports.
+
+Domain ownership is proven over HTTP. `public/.well-known/mcp-registry-auth` holds the Ed25519 **public** key (the same key as trybitstack.com), and the matching private key stays on your machine.
+
+**Publish or update:**
+1. Install the CLI: `brew install mcp-publisher` (or `go install github.com/modelcontextprotocol/registry/cmd/publisher@latest`, renamed to `mcp-publisher`).
+2. Deploy, so the auth file is live.
+3. Run `MCP_REGISTRY_PRIVATE_KEY=<hex private key> npm run mcp:publish`. The script validates `server.json`, checks the live auth file, logs in over HTTP and publishes.
+
+For a new version, bump `version` in `server.json`, deploy, and run step 3 again. The registry won't accept the same version twice.
+
+**Lost the private key?** Generate a new pair and replace the auth file:
+
+```sh
+openssl genpkey -algorithm Ed25519 -out key.pem
+echo "v=MCPv1; k=ed25519; p=$(openssl pkey -in key.pem -pubout -outform DER | tail -c 32 | base64)" > public/.well-known/mcp-registry-auth
+openssl pkey -in key.pem -noout -text | grep -A3 "priv:" | tail -n +2 | tr -d ' :\n'   # hex private key for MCP_REGISTRY_PRIVATE_KEY
+```
+
+Keep `key.pem` out of git. If trybitstack.com uses the same key, update its auth file too.

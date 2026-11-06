@@ -18,7 +18,14 @@
       ]
     },
     {
-      "source": "/(resume\\.json|\\.well-known/(.*))",
+      "source": "/resume.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/.well-known/:path*",
       "headers": [
         { "key": "Content-Type", "value": "application/json; charset=utf-8" },
         { "key": "Access-Control-Allow-Origin", "value": "*" }

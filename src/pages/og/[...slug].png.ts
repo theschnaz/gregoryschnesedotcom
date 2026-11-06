@@ -40,6 +40,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     advisory: t('Advisory', 'Selective help for B2B SaaS demand engines.'),
     resume: t('Resume', '15+ years of B2B SaaS growth.'),
     contact: t('Contact', 'The best way to reach me.'),
+    facts: t('At a glance', 'Gregory Schnese, in short answers.'),
+    agents: t('For AI agents', 'Built to be read by agents, too.'),
     newsletter: t('Newsletter', site.newsletter.name),
     '404': t('404', 'Page not found.'),
   };

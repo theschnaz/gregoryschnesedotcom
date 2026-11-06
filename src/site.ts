@@ -119,6 +119,32 @@ export const leadership = {
   ],
 } as const;
 
+/** Advisory engagements (rendered on /advisory, in Markdown and via MCP). */
+export const advisory = {
+  engagements: [
+    {
+      title: 'Paid acquisition audit',
+      body: 'A structured review of your paid program: conversion events, bidding strategy, budget allocation and reporting. You get a written teardown and a prioritized plan to move spend toward revenue.',
+      fit: 'B2B SaaS spending $50K+/month on paid',
+    },
+    {
+      title: 'Measurement & attribution build',
+      body: 'Design the funnel events, bounties and reporting your team needs to bid on value instead of volume, and the data plumbing to get them to the ad platforms.',
+      fit: 'Teams whose ad platforms optimize to leads, not pipeline',
+    },
+    {
+      title: 'Trial-to-paid sprint',
+      body: 'Find the segments and behaviors that predict conversion, then design the onboarding and lifecycle experiments, sized so they can actually reach significance.',
+      fit: 'Product-led or free-trial SaaS',
+    },
+  ],
+  bestFit: [
+    'Scoped, time-boxed engagements with a clear owner on your team.',
+    'Programs measured on pipeline and revenue.',
+    `Work that complements my full-time role at ${site.employer.name}.`,
+  ],
+};
+
 /**
  * Named testimonials. Add real quotes (with permission) from former CEOs,
  * CMOs and peers; the homepage section only renders when this has entries.

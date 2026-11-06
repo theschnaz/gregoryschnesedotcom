@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import AskAI from '@/components/AskAI.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
 
 export async function getStaticPaths() {
@@ -37,6 +38,7 @@ const d = entry.data;
       <div class="prose-gs mx-auto max-w-2xl">
         <Content />
       </div>
+      <AskAI class="mx-auto mt-12 max-w-2xl border-t border-line pt-6 dark:border-night-line" />
     </div>
   </article>
 </BaseLayout>

@@ -3,3 +3,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://gregoryschnese.com/sitemap-index.xml
+
+# For AI agents: https://gregoryschnese.com/llms.txt
+# Markdown version of any page: add .md (e.g. /about.md). MCP server: /mcp

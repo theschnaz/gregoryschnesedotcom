@@ -1,35 +1,83 @@
 import { site } from '@/site';
+import { certifications, education, skills } from '@/data/resume';
 
 export const personId = `${site.url}/#person`;
 
-/** schema.org Person. Every fact here must also be visible on the site. */
+/**
+ * schema.org Person. Every fact here must also be visible on the site
+ * (home, about, resume, facts). Rich, specific entity data helps search
+ * engines and AI assistants tie these facts to the right person.
+ */
 export function person() {
   return {
     '@type': 'Person',
     '@id': personId,
     name: site.name,
-    alternateName: site.shortName,
+    givenName: 'Gregory',
+    familyName: 'Schnese',
+    alternateName: [site.shortName, 'theschnaz'],
     url: site.url,
+    mainEntityOfPage: `${site.url}/about`,
     image: `${site.url}/gregory-schnese.jpg`,
     email: `mailto:${site.email}`,
     description: site.description,
+    disambiguatingDescription: `${site.descriptor}: ${site.jobTitle} at ${site.employer.name}; previously Fleetio, CoPromote and kikin.`,
     jobTitle: site.jobTitle,
     worksFor: { '@type': 'Organization', name: site.employer.name, url: site.employer.url },
+    hasOccupation: {
+      '@type': 'Occupation',
+      name: site.jobTitle,
+      occupationalCategory: '11-2021.00 Marketing Managers',
+      skills: skills.join(', '),
+    },
     alumniOf: [
-      { '@type': 'CollegeOrUniversity', name: 'New York University' },
-      { '@type': 'CollegeOrUniversity', name: 'University of Wisconsin–Milwaukee' },
+      { '@type': 'CollegeOrUniversity', name: 'New York University', url: 'https://www.nyu.edu' },
+      { '@type': 'CollegeOrUniversity', name: 'University of Wisconsin–Milwaukee', url: 'https://uwm.edu' },
+    ],
+    hasCredential: [
+      ...education.map((e) => ({
+        '@type': 'EducationalOccupationalCredential',
+        name: e.degree,
+        credentialCategory: 'degree',
+        recognizedBy: { '@type': 'CollegeOrUniversity', name: e.school },
+      })),
+      ...certifications.map((c) => ({
+        '@type': 'EducationalOccupationalCredential',
+        name: c.name,
+        credentialCategory: 'certification',
+        recognizedBy: { '@type': 'Organization', name: c.issuer },
+        dateCreated: c.date,
+      })),
     ],
     knowsAbout: [
       'Demand generation',
       'B2B SaaS growth',
       'Paid acquisition',
+      'Account-based marketing',
+      'Lifecycle marketing',
       'Conversion rate optimization',
       'Marketing attribution',
       'A/B testing',
+      'Growth team leadership',
+      'React',
       'React Native',
       'Bitcoin',
     ],
     sameAs: site.social.map((s) => s.url),
+  };
+}
+
+/** FAQPage for /facts. Answers are plain text and match the visible page. */
+export function faqPage(items: { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+    about: { '@id': personId },
   };
 }
 

@@ -1,0 +1,59 @@
+---
+/**
+ * "Ask AI about this page" links + "Copy as Markdown". Each link opens an
+ * assistant with this page's Markdown twin in the prompt, so every share puts
+ * the actual page into the AI's context.
+ */
+import { mdPathFor } from '@/lib/paths';
+import { site } from '@/site';
+
+interface Props {
+  /** What the assistant should do with the page */
+  prompt?: string;
+  class?: string;
+}
+const { class: className } = Astro.props;
+const mdUrl = new URL(mdPathFor(Astro.url.pathname), site.url).href;
+const prompt = `${Astro.props.prompt ?? `Read ${mdUrl} and summarize the key points about ${site.name}.`}`;
+const q = encodeURIComponent(prompt);
+const targets = [
+  { name: 'ChatGPT', href: `https://chatgpt.com/?q=${q}` },
+  { name: 'Claude', href: `https://claude.ai/new?q=${q}` },
+  { name: 'Perplexity', href: `https://www.perplexity.ai/search?q=${q}` },
+];
+---
+<div class:list={['flex flex-wrap items-center gap-2 text-sm', className]} data-ask-ai>
+  <span class="mr-1 text-muted dark:text-night-muted">Ask AI about this page:</span>
+  {targets.map((t) => (
+    <a
+      href={t.href}
+      target="_blank"
+      rel="noopener"
+      class="rounded-full px-3 py-1.5 font-medium ring-1 ring-line transition-colors hover:ring-ink dark:ring-night-line dark:hover:ring-night-ink"
+      data-event="ask_ai_click"
+    >{t.name} <span aria-hidden="true">↗</span></a>
+  ))}
+  <button
+    type="button"
+    data-copy-md={mdPathFor(Astro.url.pathname)}
+    class="rounded-full px-3 py-1.5 font-medium ring-1 ring-line transition-colors hover:ring-ink dark:ring-night-line dark:hover:ring-night-ink"
+    data-event="copy_markdown"
+  >Copy as Markdown</button>
+  <a href={mdPathFor(Astro.url.pathname)} class="link-accent ml-1">View .md</a>
+  <span class="text-muted dark:text-night-muted" role="status" aria-live="polite" data-copy-status></span>
+</div>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-md]').forEach((btn) => {
+    const status = btn.parentElement!.querySelector<HTMLElement>('[data-copy-status]')!;
+    btn.addEventListener('click', async () => {
+      try {
+        const md = await (await fetch(btn.dataset.copyMd!)).text();
+        await navigator.clipboard.writeText(md);
+        status.textContent = 'Copied';
+      } catch {
+        status.textContent = 'Could not copy; use View .md';
+      }
+      setTimeout(() => (status.textContent = ''), 2500);
+    });
+  });
+</script>

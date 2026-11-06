@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import AskAI from '@/components/AskAI.astro';
 import { article } from '@/lib/schema';
 import { readingMinutes } from '@/lib/reading';
 import EssayCard from '@/components/EssayCard.astro';
@@ -67,6 +68,7 @@ const jsonLd = article({
         <div class="prose-gs">
           <Content />
         </div>
+        <AskAI class="mt-12 border-t border-line pt-6 dark:border-night-line" />
         <aside class="mt-14 flex flex-col gap-4 rounded-2xl border border-line p-7 sm:flex-row sm:items-center sm:justify-between dark:border-night-line">
           <div>
             <p class="font-semibold">Questions, or a result to share?</p>

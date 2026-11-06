@@ -70,4 +70,10 @@ const now = defineCollection({
   }),
 });
 
-export const collections = { work, projects, writing, now };
+/** Long-form copy for static pages (e.g. About), shared with the Markdown and MCP outputs. */
+const pages = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pages' }),
+  schema: z.object({ title: z.string() }),
+});
+
+export const collections = { work, projects, writing, now, pages };

@@ -21,5 +21,10 @@ This site is a verification layer: someone who looked Gregory up should know in 
 - **Share assets:** OG images are generated at build time by `src/pages/og/[...slug].png.ts`. The intro video (`public/media/`) is rendered by `npm run og:video` (needs Playwright + ffmpeg); re-run it when the title, employer or proof numbers change.
 - **Now update:** add `src/content/now/YYYY-MM.mdx`. The newest `updated` date wins.
 
+## Agent-facing outputs
+- `src/lib/agent.ts` builds the Markdown twins, `llms.txt`/`llms-full.txt` and MCP answers from the same sources as the pages. A new page needs a matching entry in `allDocs()`, or its `<link rel="alternate" type="text/markdown">` will 404.
+- Keep `src/data/facts.ts` consistent with `site.ts` and `resume.ts`; bump `factsUpdated` when facts change.
+- After changing the MCP server, test with the official SDK client or `npx @modelcontextprotocol/inspector` against `npm run dev`.
+
 ## Before you open a PR
 `npm run check && npm run build` must pass with 0 errors.

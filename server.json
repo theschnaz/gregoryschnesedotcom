@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.gregoryschnese/profile",
+  "title": "Gregory Schnese — profile",
+  "description": "Public facts about Gregory Schnese, B2B SaaS demand-gen leader: results, case studies, resume.",
+  "version": "1.0.0",
+  "websiteUrl": "https://gregoryschnese.com/agents",
+  "icons": [
+    { "src": "https://gregoryschnese.com/gregory-schnese.jpg", "mimeType": "image/jpeg", "sizes": ["600x600"] }
+  ],
+  "remotes": [
+    { "type": "streamable-http", "url": "https://gregoryschnese.com/mcp" }
+  ]
+}
